@@ -30,6 +30,8 @@ Rode:
 npm run photos:admin
 ```
 
-Abra `http://127.0.0.1:8790/admin/photos` para escolher a foto principal, ocultar imagens ruins e reordenar fotos por produto. As escolhas ficam em `catalog_photo_overrides.json`.
+Abra `http://127.0.0.1:8790/admin/photos` para escolher a foto principal, ocultar imagens ruins, reordenar fotos por produto, carregar fotos ou videos manuais e ajustar o titulo exibido no catalogo.
+
+As escolhas de fotos ficam em `catalog_photo_overrides.json`. Os titulos editados ficam em `catalog_product_overrides.json`. Arquivos enviados manualmente ficam em `catalog_manual_media/`.
 
 Depois rode `npm run catalog:build` para regenerar o catalogo.

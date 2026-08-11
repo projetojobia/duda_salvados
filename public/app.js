@@ -59,15 +59,29 @@ function renderProducts() {
 
   for (const product of products) {
     const node = els.template.content.firstElementChild.cloneNode(true);
-    const img = node.querySelector(".photo");
+    const photoWrap = node.querySelector(".photo-wrap");
+    const fallback = node.querySelector(".photo-fallback");
     const title = node.querySelector("h2");
     const priceValue = parsePrice(product.price);
+    const media = product.media?.[0] || (product.images?.[0] ? { type: "image", url: product.images[0] } : null);
 
-    img.alt = product.title;
-    if (product.images.length) {
-      img.src = product.images[0];
-    } else {
-      img.hidden = true;
+    if (media?.type === "video") {
+      const video = document.createElement("video");
+      video.className = "photo";
+      video.src = media.url;
+      video.controls = true;
+      video.muted = true;
+      video.preload = "metadata";
+      photoWrap.prepend(video);
+      fallback.hidden = true;
+    } else if (media?.url) {
+      const img = document.createElement("img");
+      img.className = "photo";
+      img.alt = product.title;
+      img.loading = "lazy";
+      img.src = media.url;
+      photoWrap.prepend(img);
+      fallback.hidden = true;
     }
 
     node.querySelector(".code").textContent = product.code;

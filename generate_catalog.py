@@ -17,9 +17,13 @@ from PIL import Image, ImageOps
 WORKBOOK = Path(r"C:\Users\User\duda\Duda_Salvados_Hermes_GoogleSheets_v2_dashboard_executivo.xlsx")
 PHOTO_REPORT = Path(r"C:\Users\User\duda\photo_rename_report.csv")
 PHOTO_OVERRIDES = Path(r"C:\Users\User\duda\catalog_photo_overrides.json")
+PRODUCT_OVERRIDES = Path(r"C:\Users\User\duda\catalog_product_overrides.json")
+MANUAL_MEDIA_DIR = Path(r"C:\Users\User\duda\catalog_manual_media")
 PUBLIC_DIR = Path(r"C:\Users\User\duda\public")
 ASSETS_DIR = PUBLIC_DIR / "assets" / "products"
 DATA_PATH = PUBLIC_DIR / "catalog.json"
+IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
+VIDEO_EXTENSIONS = {".mp4", ".mov", ".webm"}
 
 
 COLS = {
@@ -69,6 +73,13 @@ def load_photo_map() -> dict[str, list[Path]]:
             path = Path(item.get("DestinoArquivo") or "")
             if code and path.exists():
                 photos[code].append(path)
+    if MANUAL_MEDIA_DIR.exists():
+        for code_dir in MANUAL_MEDIA_DIR.iterdir():
+            if not code_dir.is_dir():
+                continue
+            for path in sorted(code_dir.iterdir()):
+                if path.suffix.lower() in IMAGE_EXTENSIONS | VIDEO_EXTENSIONS:
+                    photos[code_dir.name].append(path)
     return {code: sorted(paths) for code, paths in photos.items()}
 
 
@@ -76,6 +87,12 @@ def load_photo_overrides() -> dict[str, dict[str, Any]]:
     if not PHOTO_OVERRIDES.exists():
         return {}
     return json.loads(PHOTO_OVERRIDES.read_text(encoding="utf-8"))
+
+
+def load_product_overrides() -> dict[str, dict[str, Any]]:
+    if not PRODUCT_OVERRIDES.exists():
+        return {}
+    return json.loads(PRODUCT_OVERRIDES.read_text(encoding="utf-8"))
 
 
 def apply_photo_overrides(code: str, photos: list[Path], overrides: dict[str, dict[str, Any]]) -> list[Path]:
@@ -107,9 +124,15 @@ def optimize_image(source: Path, target: Path) -> None:
         img.save(target, "WEBP", quality=78, method=6)
 
 
+def publish_video(source: Path, target: Path) -> None:
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, target)
+
+
 def build_catalog() -> dict[str, Any]:
     photos_by_code = load_photo_map()
     photo_overrides = load_photo_overrides()
+    product_overrides = load_product_overrides()
     wb = load_workbook(WORKBOOK, data_only=True)
     ws = wb["Produtos"]
 
@@ -130,15 +153,26 @@ def build_catalog() -> dict[str, Any]:
             skipped_sold += 1
             continue
 
-        title = str(cell(row, "model") or cell(row, "title")).strip()
+        default_title = str(cell(row, "model") or cell(row, "title")).strip()
+        title = str(product_overrides.get(code, {}).get("title") or default_title).strip()
         slug = slugify(f"{code}-{title}")
         image_urls: list[str] = []
+        media_items: list[dict[str, str]] = []
         curated_photos = apply_photo_overrides(code, photos_by_code.get(code, []), photo_overrides)
         for index, source in enumerate(curated_photos, start=1):
-            image_name = f"{slug}-{index:02d}.webp"
-            target = ASSETS_DIR / image_name
-            optimize_image(source, target)
-            image_urls.append(f"/assets/products/{image_name}")
+            suffix = source.suffix.lower()
+            if suffix in IMAGE_EXTENSIONS:
+                image_name = f"{slug}-{index:02d}.webp"
+                target = ASSETS_DIR / image_name
+                optimize_image(source, target)
+                url = f"/assets/products/{image_name}"
+                image_urls.append(url)
+                media_items.append({"type": "image", "url": url})
+            elif suffix in VIDEO_EXTENSIONS:
+                video_name = f"{slug}-{index:02d}{suffix}"
+                target = ASSETS_DIR / video_name
+                publish_video(source, target)
+                media_items.append({"type": "video", "url": f"/assets/products/{video_name}"})
 
         if not image_urls:
             missing_photos.append(code)
@@ -161,6 +195,7 @@ def build_catalog() -> dict[str, Any]:
                 "price": str(cell(row, "price")).strip(),
                 "quantity": str(cell(row, "quantity")).strip() or "1",
                 "images": image_urls,
+                "media": media_items,
                 "whatsAppText": f"Ola, tenho interesse no {code} - {title}",
             }
         )

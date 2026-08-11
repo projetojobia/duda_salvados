@@ -1,13 +1,16 @@
 import { createReadStream, existsSync } from "node:fs";
-import { readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import http from "node:http";
 import path from "node:path";
+import { randomUUID } from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.join(root, "public");
 const reportPath = path.join(root, "photo_rename_report.csv");
 const overridesPath = path.join(root, "catalog_photo_overrides.json");
+const productOverridesPath = path.join(root, "catalog_product_overrides.json");
+const manualMediaDir = path.join(root, "catalog_manual_media");
 const port = Number(process.env.PORT || 8790);
 
 const mime = {
@@ -19,7 +22,12 @@ const mime = {
   ".jpeg": "image/jpeg",
   ".png": "image/png",
   ".webp": "image/webp",
+  ".mp4": "video/mp4",
+  ".mov": "video/quicktime",
+  ".webm": "video/webm",
 };
+
+const allowedMediaExtensions = new Set([".jpg", ".jpeg", ".png", ".webp", ".mp4", ".mov", ".webm"]);
 
 function parseCsvLine(line) {
   const values = [];
@@ -57,6 +65,29 @@ async function readPhotoReport() {
   return rows;
 }
 
+async function readManualMedia() {
+  const rows = [];
+  if (!existsSync(manualMediaDir)) return rows;
+  const { readdir } = await import("node:fs/promises");
+  for (const codeDir of await readdir(manualMediaDir, { withFileTypes: true })) {
+    if (!codeDir.isDirectory()) continue;
+    const code = codeDir.name;
+    const folder = path.join(manualMediaDir, code);
+    for (const file of await readdir(folder, { withFileTypes: true })) {
+      if (!file.isFile()) continue;
+      const filePath = path.join(folder, file.name);
+      const ext = path.extname(file.name).toLowerCase();
+      if (!allowedMediaExtensions.has(ext)) continue;
+      rows.push({
+        Codigo: code,
+        DestinoArquivo: filePath,
+        Manual: "1",
+      });
+    }
+  }
+  return rows;
+}
+
 async function readJson(file, fallback) {
   if (!existsSync(file)) return fallback;
   return JSON.parse(await readFile(file, "utf8"));
@@ -69,8 +100,8 @@ function sendJson(res, value) {
 
 function safeLocalPhotoPath(raw) {
   const resolved = path.resolve(raw);
-  const photoRoot = path.resolve(root, "Fotos_Organizadas");
-  if (!resolved.startsWith(photoRoot)) return null;
+  const allowedRoots = [path.resolve(root, "Fotos_Organizadas"), path.resolve(manualMediaDir)];
+  if (!allowedRoots.some((allowedRoot) => resolved.startsWith(allowedRoot))) return null;
   return resolved;
 }
 
@@ -80,16 +111,61 @@ async function readBody(req) {
   return Buffer.concat(chunks).toString("utf8");
 }
 
+function sanitizeCode(code) {
+  return String(code || "").trim().toUpperCase().replace(/[^A-Z0-9_-]/g, "");
+}
+
+function sanitizeBaseName(name) {
+  return String(name || "midia")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9._-]+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 80) || "midia";
+}
+
+function parseMultipart(buffer, contentType) {
+  const boundaryMatch = contentType.match(/boundary=(?:"([^"]+)"|([^;]+))/);
+  const boundary = boundaryMatch?.[1] || boundaryMatch?.[2];
+  if (!boundary) throw new Error("Upload sem boundary");
+  const marker = Buffer.from(`--${boundary}`);
+  const parts = [];
+  let start = buffer.indexOf(marker);
+  while (start >= 0) {
+    start += marker.length;
+    if (buffer[start] === 45 && buffer[start + 1] === 45) break;
+    if (buffer[start] === 13 && buffer[start + 1] === 10) start += 2;
+    const headerEnd = buffer.indexOf(Buffer.from("\r\n\r\n"), start);
+    if (headerEnd < 0) break;
+    const headers = buffer.slice(start, headerEnd).toString("utf8");
+    const next = buffer.indexOf(marker, headerEnd + 4);
+    if (next < 0) break;
+    let body = buffer.slice(headerEnd + 4, next);
+    if (body.at(-2) === 13 && body.at(-1) === 10) body = body.slice(0, -2);
+    const disposition = headers.match(/content-disposition:\s*form-data;([^\r\n]+)/i)?.[1] || "";
+    const name = disposition.match(/name="([^"]+)"/)?.[1] || "";
+    const filename = disposition.match(/filename="([^"]*)"/)?.[1] || "";
+    parts.push({ name, filename, body });
+    start = next;
+  }
+  return parts;
+}
+
 async function handleApi(req, res, url) {
   if (url.pathname === "/api/photos") {
-    const [catalog, rows, overrides] = await Promise.all([
+    const [catalog, reportRows, manualRows, overrides, productOverrides] = await Promise.all([
       readJson(path.join(publicDir, "catalog.json"), { products: [] }),
       readPhotoReport(),
+      readManualMedia(),
       readJson(overridesPath, {}),
+      readJson(productOverridesPath, {}),
     ]);
+    const rows = [...reportRows, ...manualRows];
     const products = catalog.products.map((product) => ({
       code: product.code,
       title: product.title,
+      customTitle: productOverrides[product.code]?.title || "",
       category: product.category,
       price: product.price,
       status: product.status,
@@ -100,10 +176,12 @@ async function handleApi(req, res, url) {
           fileName: path.basename(row.DestinoArquivo),
           path: row.DestinoArquivo,
           url: `/local-photo?path=${encodeURIComponent(row.DestinoArquivo)}`,
+          mediaType: [".mp4", ".mov", ".webm"].includes(path.extname(row.DestinoArquivo).toLowerCase()) ? "video" : "image",
+          manual: row.Manual === "1",
         })),
       override: overrides[product.code] || { primary: "", order: [], hidden: [] },
     }));
-    sendJson(res, { products, overrides });
+    sendJson(res, { products, overrides, productOverrides });
     return;
   }
 
@@ -111,6 +189,31 @@ async function handleApi(req, res, url) {
     const body = JSON.parse(await readBody(req));
     await writeFile(overridesPath, `${JSON.stringify(body, null, 2)}\n`, "utf8");
     sendJson(res, { ok: true });
+    return;
+  }
+
+  if (url.pathname === "/api/product-overrides" && req.method === "POST") {
+    const body = JSON.parse(await readBody(req));
+    await writeFile(productOverridesPath, `${JSON.stringify(body, null, 2)}\n`, "utf8");
+    sendJson(res, { ok: true });
+    return;
+  }
+
+  if (url.pathname === "/api/upload" && req.method === "POST") {
+    const chunks = [];
+    for await (const chunk of req) chunks.push(chunk);
+    const parts = parseMultipart(Buffer.concat(chunks), req.headers["content-type"] || "");
+    const code = sanitizeCode(parts.find((part) => part.name === "code")?.body.toString("utf8") || "");
+    const filePart = parts.find((part) => part.name === "media" && part.filename);
+    if (!code || !filePart) throw new Error("Produto ou arquivo ausente");
+    const ext = path.extname(filePart.filename).toLowerCase();
+    if (!allowedMediaExtensions.has(ext)) throw new Error("Formato nao permitido");
+    const folder = path.join(manualMediaDir, code);
+    await mkdir(folder, { recursive: true });
+    const base = sanitizeBaseName(path.basename(filePart.filename, ext));
+    const target = path.join(folder, `${code}_${Date.now()}_${randomUUID().slice(0, 8)}_${base}${ext}`);
+    await writeFile(target, filePart.body);
+    sendJson(res, { ok: true, fileName: path.basename(target), path: target });
     return;
   }
 

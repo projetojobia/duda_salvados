@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T13:46:08",
+  "generatedAt": "2026-08-11T13:53:50",
   "source": {
     "spreadsheetId": "1kqLutUpgQwwnJgHmR7wrJ97zvQR8QZGRB6QyymM4GPU",
     "workbook": "Duda_Salvados_Hermes_GoogleSheets_v2_dashboard_executivo.xlsx"
@@ -81,6 +81,12 @@
       "images": [
         "/assets/products/ds001-sanda-3363-sport-watch-analogico-digital-pulseira-metalica-prata-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds001-sanda-3363-sport-watch-analogico-digital-pulseira-metalica-prata-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS001 - SANDA 3363 Sport Watch analógico/digital pulseira metálica prata"
     },
     {
@@ -100,6 +106,7 @@
       "price": "150",
       "quantity": "1",
       "images": [],
+      "media": [],
       "whatsAppText": "Ola, tenho interesse no DS002 - Pre-rinse / Pré-lavagem Mola Spray Preto Fosco"
     },
     {
@@ -119,6 +126,7 @@
       "price": "35",
       "quantity": "1",
       "images": [],
+      "media": [],
       "whatsAppText": "Ola, tenho interesse no DS004 - M3 Digital Camera Retrô Flip Screen 720p"
     },
     {
@@ -141,6 +149,16 @@
         "/assets/products/ds005-carrinho-gira-gira-plasma-car-com-rodas-led-01.webp",
         "/assets/products/ds005-carrinho-gira-gira-plasma-car-com-rodas-led-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds005-carrinho-gira-gira-plasma-car-com-rodas-led-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds005-carrinho-gira-gira-plasma-car-com-rodas-led-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS005 - Carrinho gira-gira / plasma car com rodas LED"
     },
     {
@@ -161,6 +179,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds006-caminhao-mack-relampago-mcqueen-com-carreta-rust-eze-carrinho-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds006-caminhao-mack-relampago-mcqueen-com-carreta-rust-eze-carrinho-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS006 - Caminhão Mack Relâmpago McQueen com carreta Rust-eze + carrinho"
     },
@@ -184,6 +208,16 @@
         "/assets/products/ds007-pantufa-vaquinha-pelucia-tamanho-36-37-01.webp",
         "/assets/products/ds007-pantufa-vaquinha-pelucia-tamanho-36-37-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds007-pantufa-vaquinha-pelucia-tamanho-36-37-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds007-pantufa-vaquinha-pelucia-tamanho-36-37-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS007 - Pantufa vaquinha pelúcia tamanho 36-37"
     },
     {
@@ -205,6 +239,12 @@
       "images": [
         "/assets/products/ds008-pista-dinossauro-2-em-1-com-luz-musica-e-escada-automatica-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds008-pista-dinossauro-2-em-1-com-luz-musica-e-escada-automatica-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS008 - Pista Dinossauro 2 em 1 com luz, música e escada automática"
     },
     {
@@ -225,6 +265,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds009-poco-pelucia-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds009-poco-pelucia-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS009 - Poco pelúcia"
     },
@@ -248,6 +294,16 @@
         "/assets/products/ds010-on-cl202-220-01.webp",
         "/assets/products/ds010-on-cl202-220-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds010-on-cl202-220-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds010-on-cl202-220-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS010 - ON-CL202/220"
     },
     {
@@ -268,6 +324,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds011-jogo-de-panelas-ferro-fundido-inducao-3-pecas-tampa-vidro-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds011-jogo-de-panelas-ferro-fundido-inducao-3-pecas-tampa-vidro-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS011 - Jogo de panelas ferro fundido inducao 3 pecas tampa vidro"
     },
@@ -291,6 +353,16 @@
         "/assets/products/ds012-xicara-ceramica-branca-150-ml-live-sub-01.webp",
         "/assets/products/ds012-xicara-ceramica-branca-150-ml-live-sub-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds012-xicara-ceramica-branca-150-ml-live-sub-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds012-xicara-ceramica-branca-150-ml-live-sub-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS012 - Xicara ceramica branca 150 ml Live Sub"
     },
     {
@@ -313,6 +385,16 @@
         "/assets/products/ds013-es1155-01.webp",
         "/assets/products/ds013-es1155-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds013-es1155-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds013-es1155-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS013 - ES1155"
     },
     {
@@ -333,6 +415,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds014-cosmo-bubbles-60-ml-caixa-com-12-unidades-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds014-cosmo-bubbles-60-ml-caixa-com-12-unidades-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS014 - Cosmo Bubbles 60 ml caixa com 12 unidades"
     },
@@ -355,6 +443,16 @@
       "images": [
         "/assets/products/ds015-244329-jogo-de-formoes-olho-de-tigre-4-pecas-01.webp",
         "/assets/products/ds015-244329-jogo-de-formoes-olho-de-tigre-4-pecas-02.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds015-244329-jogo-de-formoes-olho-de-tigre-4-pecas-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds015-244329-jogo-de-formoes-olho-de-tigre-4-pecas-02.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS015 - 244329 - Jogo de Formoes Olho de Tigre 4 pecas"
     },
@@ -379,6 +477,20 @@
         "/assets/products/ds016-yx-370-precision-screwdriver-6-em-1-02.webp",
         "/assets/products/ds016-yx-370-precision-screwdriver-6-em-1-03.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds016-yx-370-precision-screwdriver-6-em-1-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds016-yx-370-precision-screwdriver-6-em-1-02.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds016-yx-370-precision-screwdriver-6-em-1-03.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS016 - YX-370 Precision Screwdriver 6 em 1"
     },
     {
@@ -399,6 +511,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds017-capa-iphone-13-pro-com-logo-e-protecao-de-camera-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds017-capa-iphone-13-pro-com-logo-e-protecao-de-camera-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS017 - Capa iPhone 13 Pro com logo e protecao de camera"
     },
@@ -422,6 +540,16 @@
         "/assets/products/ds018-patins-inline-ajustavel-35-38-preto-roxo-01.webp",
         "/assets/products/ds018-patins-inline-ajustavel-35-38-preto-roxo-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds018-patins-inline-ajustavel-35-38-preto-roxo-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds018-patins-inline-ajustavel-35-38-preto-roxo-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS018 - Patins inline ajustavel 35-38 preto/roxo"
     },
     {
@@ -443,6 +571,12 @@
       "images": [
         "/assets/products/ds019-capacho-bem-vindo-preto-cinza-retangular-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds019-capacho-bem-vindo-preto-cinza-retangular-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS019 - Capacho Bem-vindo preto/cinza retangular"
     },
     {
@@ -463,6 +597,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds020-tenis-esportivo-rosa-36-37-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds020-tenis-esportivo-rosa-36-37-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS020 - Tenis esportivo rosa 36/37"
     },
@@ -486,6 +626,16 @@
         "/assets/products/ds021-ilink-brush-hair-dryer-and-styler-220v-01.webp",
         "/assets/products/ds021-ilink-brush-hair-dryer-and-styler-220v-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds021-ilink-brush-hair-dryer-and-styler-220v-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds021-ilink-brush-hair-dryer-and-styler-220v-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS021 - ILINK Brush Hair Dryer and Styler 220V"
     },
     {
@@ -507,6 +657,12 @@
       "images": [
         "/assets/products/ds022-tenis-casual-branco-plataforma-37-38-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds022-tenis-casual-branco-plataforma-37-38-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS022 - Tenis casual branco plataforma 37/38"
     },
     {
@@ -527,6 +683,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds023-creme-adesivo-para-protese-dental-68-g-sabor-original-pacote-4-unidades-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds023-creme-adesivo-para-protese-dental-68-g-sabor-original-pacote-4-unidades-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS023 - Creme adesivo para protese dental 68 g sabor original - pacote 4 unidades"
     },
@@ -550,6 +712,16 @@
         "/assets/products/ds024-alloy-car-series-city-alloy-car-6-pcs-01.webp",
         "/assets/products/ds024-alloy-car-series-city-alloy-car-6-pcs-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds024-alloy-car-series-city-alloy-car-6-pcs-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds024-alloy-car-series-city-alloy-car-6-pcs-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS024 - Alloy Car Series / City Alloy Car 6 pcs"
     },
     {
@@ -570,6 +742,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds025-esmalteiro-expositor-de-esmaltes-5-prateleiras-branco-marrom-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds025-esmalteiro-expositor-de-esmaltes-5-prateleiras-branco-marrom-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS025 - Esmalteiro expositor de esmaltes 5 prateleiras branco/marrom"
     },
@@ -594,6 +772,20 @@
         "/assets/products/ds026-bpf-050-w01-cb-02.webp",
         "/assets/products/ds026-bpf-050-w01-cb-03.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds026-bpf-050-w01-cb-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds026-bpf-050-w01-cb-02.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds026-bpf-050-w01-cb-03.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS026 - BPF-050 W01 CB"
     },
     {
@@ -614,6 +806,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds027-tabua-de-corte-e-servir-em-madeira-com-alca-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds027-tabua-de-corte-e-servir-em-madeira-com-alca-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS027 - Tabua de corte e servir em madeira com alca"
     },
@@ -637,6 +835,16 @@
         "/assets/products/ds028-banheira-de-bebe-15l-rosa-rsbb-01.webp",
         "/assets/products/ds028-banheira-de-bebe-15l-rosa-rsbb-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds028-banheira-de-bebe-15l-rosa-rsbb-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds028-banheira-de-bebe-15l-rosa-rsbb-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS028 - Banheira de bebê 15L rosa RSBB"
     },
     {
@@ -658,6 +866,16 @@
       "images": [
         "/assets/products/ds029-babuche-crocs-bege-adulto-01.webp",
         "/assets/products/ds029-babuche-crocs-bege-adulto-02.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds029-babuche-crocs-bege-adulto-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds029-babuche-crocs-bege-adulto-02.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS029 - Babuche/crocs bege adulto"
     },
@@ -681,6 +899,16 @@
         "/assets/products/ds030-garrafa-lines-de-vidro-para-geladeira-1l-01.webp",
         "/assets/products/ds030-garrafa-lines-de-vidro-para-geladeira-1l-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds030-garrafa-lines-de-vidro-para-geladeira-1l-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds030-garrafa-lines-de-vidro-para-geladeira-1l-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS030 - Garrafa Lines de vidro para geladeira 1L"
     },
     {
@@ -702,6 +930,16 @@
       "images": [
         "/assets/products/ds031-caixas-organizadoras-transparentes-kit-12-unidades-01.webp",
         "/assets/products/ds031-caixas-organizadoras-transparentes-kit-12-unidades-02.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds031-caixas-organizadoras-transparentes-kit-12-unidades-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds031-caixas-organizadoras-transparentes-kit-12-unidades-02.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS031 - Caixas organizadoras transparentes kit 12 unidades"
     },
@@ -725,6 +963,16 @@
         "/assets/products/ds032-extensao-eletrica-15-m-01.webp",
         "/assets/products/ds032-extensao-eletrica-15-m-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds032-extensao-eletrica-15-m-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds032-extensao-eletrica-15-m-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS032 - Extensão elétrica 15 m"
     },
     {
@@ -747,6 +995,16 @@
         "/assets/products/ds033-suporte-articulado-para-tv-32-75-01.webp",
         "/assets/products/ds033-suporte-articulado-para-tv-32-75-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds033-suporte-articulado-para-tv-32-75-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds033-suporte-articulado-para-tv-32-75-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS033 - Suporte articulado para TV 32-75"
     },
     {
@@ -767,6 +1025,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds034-percarbonato-de-sodio-tira-manchas-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds034-percarbonato-de-sodio-tira-manchas-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS034 - Percarbonato de sódio tira manchas"
     },
@@ -789,6 +1053,12 @@
       "images": [
         "/assets/products/ds035-kit-balsamo-labial-4-un-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds035-kit-balsamo-labial-4-un-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS035 - Kit bálsamo labial 4 un"
     },
     {
@@ -809,6 +1079,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds036-concreto-endurecedor-com-formol-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds036-concreto-endurecedor-com-formol-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS036 - Concreto endurecedor com formol"
     },
@@ -831,6 +1107,12 @@
       "images": [
         "/assets/products/ds037-retinol-colageno-complex-ha-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds037-retinol-colageno-complex-ha-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS037 - Retinol Colágeno Complex + HA"
     },
     {
@@ -851,6 +1133,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds038-removedor-de-ferrugem-250-ml-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds038-removedor-de-ferrugem-250-ml-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS038 - Removedor de ferrugem 250 ml"
     },
@@ -873,6 +1161,12 @@
       "images": [
         "/assets/products/ds039-dimethylx-60-capsulas-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds039-dimethylx-60-capsulas-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS039 - Dimethylx 60 cápsulas"
     },
     {
@@ -893,6 +1187,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds040-cachos-naturais-500-g-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds040-cachos-naturais-500-g-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS040 - Cachos Naturais 500 g"
     },
@@ -915,6 +1215,12 @@
       "images": [
         "/assets/products/ds041-colageno-hidrolisado-250-g-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds041-colageno-hidrolisado-250-g-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS041 - Colágeno hidrolisado 250 g"
     },
     {
@@ -935,6 +1241,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds042-saches-friskies-filhotes-carne-15-un-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds042-saches-friskies-filhotes-carne-15-un-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS042 - Sachês Friskies filhotes carne 15 un"
     },
@@ -957,6 +1269,12 @@
       "images": [
         "/assets/products/ds043-cafe-com-deus-pai-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds043-cafe-com-deus-pai-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS043 - Café com Deus Pai"
     },
     {
@@ -977,6 +1295,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds044-o-caibalion-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds044-o-caibalion-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS044 - O Caibalion"
     },
@@ -1000,6 +1324,16 @@
         "/assets/products/ds045-jogo-de-cama-solteiro-4-pecas-01.webp",
         "/assets/products/ds045-jogo-de-cama-solteiro-4-pecas-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds045-jogo-de-cama-solteiro-4-pecas-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds045-jogo-de-cama-solteiro-4-pecas-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS045 - Jogo de cama solteiro 4 peças"
     },
     {
@@ -1021,6 +1355,16 @@
       "images": [
         "/assets/products/ds046-palhetas-22-26-polegadas-01.webp",
         "/assets/products/ds046-palhetas-22-26-polegadas-02.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds046-palhetas-22-26-polegadas-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds046-palhetas-22-26-polegadas-02.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS046 - Palhetas 22/26 polegadas"
     },
@@ -1044,6 +1388,16 @@
         "/assets/products/ds047-refil-mop-chenille-pack-5-01.webp",
         "/assets/products/ds047-refil-mop-chenille-pack-5-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds047-refil-mop-chenille-pack-5-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds047-refil-mop-chenille-pack-5-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS047 - Refil mop chenille pack 5"
     },
     {
@@ -1064,6 +1418,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds048-hike-preto-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds048-hike-preto-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS048 - Hike preto"
     },
@@ -1086,6 +1446,12 @@
       "images": [
         "/assets/products/ds049-arame-farpado-aco-zincado-50-kgf-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds049-arame-farpado-aco-zincado-50-kgf-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS049 - Arame farpado aço zincado 50 kgf"
     },
     {
@@ -1106,6 +1472,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds050-macaco-hidraulico-2t-jacare-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds050-macaco-hidraulico-2t-jacare-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS050 - Macaco hidráulico 2T jacaré"
     },
@@ -1129,6 +1501,16 @@
         "/assets/products/ds051-pote-para-leite-em-po-300-ml-01.webp",
         "/assets/products/ds051-pote-para-leite-em-po-300-ml-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds051-pote-para-leite-em-po-300-ml-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds051-pote-para-leite-em-po-300-ml-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS051 - Pote para leite em pó 300 ml"
     },
     {
@@ -1151,6 +1533,16 @@
         "/assets/products/ds052-meia-calca-infantil-120d-01.webp",
         "/assets/products/ds052-meia-calca-infantil-120d-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds052-meia-calca-infantil-120d-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds052-meia-calca-infantil-120d-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS052 - Meia calça infantil 120D"
     },
     {
@@ -1171,6 +1563,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds053-massa-de-modelar-ceramica-fria-500g-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds053-massa-de-modelar-ceramica-fria-500g-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS053 - Massa de modelar cerâmica fria 500g"
     },
@@ -1193,6 +1591,12 @@
       "images": [
         "/assets/products/ds054-unhas-posticas-press-on-nails-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds054-unhas-posticas-press-on-nails-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS054 - Unhas postiças press on nails"
     },
     {
@@ -1213,6 +1617,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds055-verniz-acrilico-brilhante-100-ml-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds055-verniz-acrilico-brilhante-100-ml-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS055 - Verniz acrílico brilhante 100 ml"
     },
@@ -1235,6 +1645,12 @@
       "images": [
         "/assets/products/ds056-tinta-giotto-12-cores-15-ml-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds056-tinta-giotto-12-cores-15-ml-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS056 - Tinta Giotto 12 cores 15 ml"
     },
     {
@@ -1255,6 +1671,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds057-caneta-line-pen-6-cores-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds057-caneta-line-pen-6-cores-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS057 - Caneta line pen 6 cores"
     },
@@ -1277,6 +1699,12 @@
       "images": [
         "/assets/products/ds058-cilios-clusters-diy-8-16-mm-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds058-cilios-clusters-diy-8-16-mm-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS058 - Cílios clusters DIY 8-16 mm"
     },
     {
@@ -1297,6 +1725,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds059-cadeira-escritorio-tela-mesh-preta-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds059-cadeira-escritorio-tela-mesh-preta-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS059 - Cadeira escritório tela mesh preta"
     },
@@ -1320,6 +1754,16 @@
         "/assets/products/ds060-vestido-infantil-branco-festa-luxo-01.webp",
         "/assets/products/ds060-vestido-infantil-branco-festa-luxo-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds060-vestido-infantil-branco-festa-luxo-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds060-vestido-infantil-branco-festa-luxo-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS060 - Vestido infantil branco festa luxo"
     },
     {
@@ -1340,6 +1784,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds061-toalha-grande-infantil-rosa-ursinho-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds061-toalha-grande-infantil-rosa-ursinho-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS061 - Toalha grande infantil rosa ursinho"
     },
@@ -1362,6 +1812,12 @@
       "images": [
         "/assets/products/ds062-kit-3-porta-retratos-madeira-com-vidro-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds062-kit-3-porta-retratos-madeira-com-vidro-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS062 - Kit 3 porta-retratos madeira com vidro"
     },
     {
@@ -1382,6 +1838,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds063-desodorante-cristal-stick-60-g-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds063-desodorante-cristal-stick-60-g-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS063 - Desodorante cristal stick 60 g"
     },
@@ -1404,6 +1866,12 @@
       "images": [
         "/assets/products/ds064-manta-para-sofa-bege-com-franjas-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds064-manta-para-sofa-bege-com-franjas-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS064 - Manta para sofá bege com franjas"
     },
     {
@@ -1425,6 +1893,12 @@
       "images": [
         "/assets/products/ds065-trio-cilindros-mdf-cru-p-m-g-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds065-trio-cilindros-mdf-cru-p-m-g-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS065 - Trio cilindros MDF cru P M G"
     },
     {
@@ -1445,6 +1919,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds066-buque-arranjo-de-flores-secas-decorativo-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds066-buque-arranjo-de-flores-secas-decorativo-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS066 - Buquê arranjo de flores secas decorativo"
     },
@@ -1468,6 +1948,16 @@
         "/assets/products/ds067-igora-royal-louro-claro-01.webp",
         "/assets/products/ds067-igora-royal-louro-claro-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds067-igora-royal-louro-claro-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds067-igora-royal-louro-claro-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS067 - Igora Royal louro claro"
     },
     {
@@ -1490,6 +1980,16 @@
         "/assets/products/ds068-necessaire-feminina-preta-01.webp",
         "/assets/products/ds068-necessaire-feminina-preta-02.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds068-necessaire-feminina-preta-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds068-necessaire-feminina-preta-02.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS068 - Nécessaire feminina preta"
     },
     {
@@ -1510,6 +2010,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds069-toalha-infantil-grande-verde-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds069-toalha-infantil-grande-verde-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS069 - Toalha infantil grande verde"
     },
@@ -1532,6 +2038,12 @@
       "images": [
         "/assets/products/ds070-luz-led-por-do-sol-usb-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds070-luz-led-por-do-sol-usb-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS070 - Luz LED pôr do sol USB"
     },
     {
@@ -1553,6 +2065,12 @@
       "images": [
         "/assets/products/ds071-fone-de-ouvido-bluetooth-sem-fio-01.webp"
       ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds071-fone-de-ouvido-bluetooth-sem-fio-01.webp"
+        }
+      ],
       "whatsAppText": "Ola, tenho interesse no DS071 - Fone de ouvido Bluetooth sem fio"
     },
     {
@@ -1573,6 +2091,12 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds072-kit-com-5-refis-para-mop-giratorio-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds072-kit-com-5-refis-para-mop-giratorio-01.webp"
+        }
       ],
       "whatsAppText": "Ola, tenho interesse no DS072 - Kit com 5 refis para mop giratório"
     }

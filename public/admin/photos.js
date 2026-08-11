@@ -1,6 +1,7 @@
 const state = {
   products: [],
   overrides: {},
+  productOverrides: {},
   selected: "",
   search: "",
   missingOnly: false,
@@ -20,6 +21,13 @@ const normalize = (value) =>
     .replace(/\p{Diacritic}/gu, "")
     .toLowerCase();
 
+const escapeHtml = (value) =>
+  String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+
 function ensureOverride(code) {
   if (!state.overrides[code]) state.overrides[code] = { primary: "", order: [], hidden: [] };
   const override = state.overrides[code];
@@ -29,9 +37,15 @@ function ensureOverride(code) {
   return override;
 }
 
+function ensureProductOverride(code) {
+  if (!state.productOverrides[code]) state.productOverrides[code] = { title: "" };
+  state.productOverrides[code].title ||= "";
+  return state.productOverrides[code];
+}
+
 function visibleProducts() {
   return state.products.filter((product) => {
-    const text = normalize(`${product.code} ${product.title} ${product.category}`);
+    const text = normalize(`${product.code} ${product.customTitle || product.title} ${product.category}`);
     const noPhotos = product.sourcePhotos.length === 0;
     return (!state.search || text.includes(normalize(state.search))) && (!state.missingOnly || noPhotos);
   });
@@ -42,7 +56,7 @@ function renderList() {
   for (const product of visibleProducts()) {
     const button = document.createElement("button");
     button.className = `item ${state.selected === product.code ? "active" : ""}`;
-    button.innerHTML = `<strong>${product.code}</strong><span>${product.title}</span><small>${product.sourcePhotos.length} foto(s)</small>`;
+    button.innerHTML = `<strong>${escapeHtml(product.code)}</strong><span>${escapeHtml(product.customTitle || product.title)}</span><small>${product.sourcePhotos.length} arquivo(s)</small>`;
     button.addEventListener("click", () => {
       state.selected = product.code;
       render();
@@ -97,6 +111,25 @@ function setPrimary(code, fileName) {
   renderEditor();
 }
 
+function updateTitle(code, title) {
+  const override = ensureProductOverride(code);
+  override.title = title.trim();
+  const product = state.products.find((item) => item.code === code);
+  if (product) product.customTitle = override.title;
+  renderList();
+}
+
+async function uploadMedia(code, input) {
+  const file = input.files?.[0];
+  if (!file) return;
+  const form = new FormData();
+  form.append("code", code);
+  form.append("media", file);
+  const response = await fetch("/api/upload", { method: "POST", body: form });
+  if (!response.ok) throw new Error(await response.text());
+  await loadData(code);
+}
+
 function renderEditor() {
   const product = state.products.find((item) => item.code === state.selected);
   if (!product) {
@@ -104,6 +137,7 @@ function renderEditor() {
     return;
   }
   const override = ensureOverride(product.code);
+  const productOverride = ensureProductOverride(product.code);
   const photos = orderedPhotos(product);
   const primary = override.primary || photos.find((photo) => !override.hidden.includes(photo.fileName))?.fileName || "";
 
@@ -112,8 +146,8 @@ function renderEditor() {
   head.className = "editor-head";
   head.innerHTML = `
     <div>
-      <h2>${product.code} - ${product.title}</h2>
-      <p class="meta">${product.category} | ${product.status} | R$ ${product.price}</p>
+      <h2>${escapeHtml(product.code)} - ${escapeHtml(product.customTitle || product.title)}</h2>
+      <p class="meta">${escapeHtml(product.category)} | ${escapeHtml(product.status)} | R$ ${escapeHtml(product.price)}</p>
     </div>
     <button id="clear-product">Limpar escolhas deste produto</button>
   `;
@@ -121,6 +155,26 @@ function renderEditor() {
   head.querySelector("#clear-product").addEventListener("click", () => {
     delete state.overrides[product.code];
     renderEditor();
+  });
+
+  const tools = document.createElement("div");
+  tools.className = "product-tools";
+  tools.innerHTML = `
+    <label class="field">
+      <span>Titulo do produto</span>
+      <input id="title-edit" type="text" value="${escapeHtml(productOverride.title || "")}" placeholder="${escapeHtml(product.title)}" />
+    </label>
+    <label class="upload">
+      <span>Carregar foto ou video</span>
+      <input id="media-upload" type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime,video/webm" />
+    </label>
+  `;
+  els.editor.append(tools);
+  tools.querySelector("#title-edit").addEventListener("input", (event) => {
+    updateTitle(product.code, event.target.value);
+  });
+  tools.querySelector("#media-upload").addEventListener("change", (event) => {
+    uploadMedia(product.code, event.target).catch((error) => alert(error.message));
   });
 
   if (!photos.length) {
@@ -138,10 +192,14 @@ function renderEditor() {
     const card = document.createElement("article");
     card.className = `photo-card ${primary === photo.fileName && !hidden ? "primary" : ""} ${hidden ? "hidden-photo" : ""}`;
     card.innerHTML = `
-      <img src="${photo.url}" alt="${photo.fileName}" />
+      ${
+        photo.mediaType === "video"
+          ? `<video src="${photo.url}" controls muted preload="metadata"></video>`
+          : `<img src="${photo.url}" alt="${escapeHtml(photo.fileName)}" />`
+      }
       <div class="photo-actions">
-        <strong>${primary === photo.fileName && !hidden ? "Principal" : hidden ? "Oculta" : "Disponivel"}</strong>
-        <span class="filename">${photo.fileName}</span>
+        <strong>${photo.manual ? "Manual | " : ""}${primary === photo.fileName && !hidden ? "Principal" : hidden ? "Oculta" : "Disponivel"}</strong>
+        <span class="filename">${escapeHtml(photo.fileName)}</span>
         <div class="row">
           <button data-action="primary">Principal</button>
           <button data-action="up">Subir</button>
@@ -169,25 +227,38 @@ async function save() {
   for (const [code, override] of Object.entries(state.overrides)) {
     if (override.primary || override.order.length || override.hidden.length) cleaned[code] = override;
   }
-  const response = await fetch("/api/overrides", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify(cleaned),
-  });
-  if (!response.ok) throw new Error("Falha ao salvar");
+  const productCleaned = {};
+  for (const [code, override] of Object.entries(state.productOverrides)) {
+    if (override.title) productCleaned[code] = { title: override.title };
+  }
+  const [response, productResponse] = await Promise.all([
+    fetch("/api/overrides", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(cleaned),
+    }),
+    fetch("/api/product-overrides", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(productCleaned),
+    }),
+  ]);
+  if (!response.ok || !productResponse.ok) throw new Error("Falha ao salvar");
   state.overrides = cleaned;
+  state.productOverrides = productCleaned;
   els.save.textContent = "Salvo";
   setTimeout(() => {
     els.save.textContent = "Salvar escolhas";
   }, 1200);
 }
 
-async function boot() {
+async function loadData(selected = state.selected) {
   const response = await fetch("/api/photos");
   const data = await response.json();
   state.products = data.products;
   state.overrides = data.overrides || {};
-  state.selected = state.products[0]?.code || "";
+  state.productOverrides = data.productOverrides || {};
+  state.selected = selected || state.products[0]?.code || "";
   render();
 }
 
@@ -201,4 +272,4 @@ els.missing.addEventListener("change", (event) => {
 });
 els.save.addEventListener("click", () => save().catch((error) => alert(error.message)));
 
-boot();
+loadData();
