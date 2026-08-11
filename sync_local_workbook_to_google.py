@@ -30,6 +30,23 @@ def convert_value(value: Any) -> Any:
     return value
 
 
+def convert_formula_for_google(value: str) -> str:
+    replacements = {
+        "IFERROR": "SEERRO",
+        "COUNTIF": "CONT.SE",
+        "SUMPRODUCT": "SOMARPRODUTO",
+        "SUMIFS": "SOMASES",
+        "SUM": "SOMA",
+        "MAX": "MÁXIMO",
+        "OR": "OU",
+        "IF": "SE",
+    }
+    formula = value
+    for english, portuguese in sorted(replacements.items(), key=lambda item: len(item[0]), reverse=True):
+        formula = formula.replace(f"{english}(", f"{portuguese}(")
+    return formula.replace(",", ";")
+
+
 def sheet_values(ws) -> list[list[Any]]:
     data: list[list[Any]] = []
     for row in ws.iter_rows():
@@ -53,20 +70,36 @@ def sheet_bounds(ws) -> tuple[int, int]:
     return last_row, last_col
 
 
-def build_payload(workbook_path: Path) -> list[dict[str, Any]]:
+def build_payload(workbook_path: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     wb = load_workbook(workbook_path, data_only=False)
-    data = []
+    raw_data = []
+    formula_data = []
     for ws in wb.worksheets:
         values = sheet_values(ws)
+        raw_values = [
+            ["" if isinstance(value, str) and value.startswith("=") else value for value in row]
+            for row in values
+        ]
         last_row, last_col = sheet_bounds(ws)
-        data.append(
+        width = max(last_col, max((len(row) for row in values), default=1))
+        height = max(last_row, len(values))
+        raw_data.append(
             {
-                "range": f"{ws.title}!A1:{get_column_letter(last_col)}{last_row}",
-                "values": values,
+                "range": f"{ws.title}!A1:{get_column_letter(width)}{height}",
+                "values": raw_values,
             }
         )
+        for row_index, row in enumerate(values, start=1):
+            for col_index, value in enumerate(row, start=1):
+                if isinstance(value, str) and value.startswith("="):
+                    formula_data.append(
+                        {
+                            "range": f"{ws.title}!{get_column_letter(col_index)}{row_index}",
+                            "values": [[convert_formula_for_google(value)]],
+                        }
+                    )
     wb.close()
-    return data
+    return raw_data, formula_data
 
 
 def verify_destination(service) -> str:
@@ -87,23 +120,30 @@ def main() -> int:
 
     service = build_service("sheets", "v4")
     title = verify_destination(service)
-    data = build_payload(WORKBOOK_PATH)
+    raw_data, formula_data = build_payload(WORKBOOK_PATH)
 
-    total_cells = sum(len(item["values"]) * max((len(row) for row in item["values"]), default=0) for item in data)
+    total_cells = sum(len(item["values"]) * max((len(row) for row in item["values"]), default=0) for item in raw_data)
     print(f"Destino: {title}")
     print(f"Arquivo local: {WORKBOOK_PATH.name}")
-    print(f"Abas: {len(data)}")
+    print(f"Abas: {len(raw_data)}")
     print(f"Celulas estimadas: {total_cells}")
+    print(f"Formulas: {len(formula_data)}")
 
     if args.dry_run:
         print("Dry-run: nenhuma alteracao enviada.")
         return 0
 
-    result = service.spreadsheets().values().batchUpdate(
+    raw_result = service.spreadsheets().values().batchUpdate(
         spreadsheetId=SPREADSHEET_ID,
-        body={"valueInputOption": "USER_ENTERED", "data": data},
+        body={"valueInputOption": "RAW", "data": raw_data},
     ).execute()
-    print(result)
+    formula_result = {}
+    if formula_data:
+        formula_result = service.spreadsheets().values().batchUpdate(
+            spreadsheetId=SPREADSHEET_ID,
+            body={"valueInputOption": "USER_ENTERED", "data": formula_data},
+        ).execute()
+    print({"raw": raw_result, "formulas": formula_result})
     return 0
 
 
