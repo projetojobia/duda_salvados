@@ -86,13 +86,13 @@ def load_photo_map() -> dict[str, list[Path]]:
 def load_photo_overrides() -> dict[str, dict[str, Any]]:
     if not PHOTO_OVERRIDES.exists():
         return {}
-    return json.loads(PHOTO_OVERRIDES.read_text(encoding="utf-8"))
+    return json.loads(PHOTO_OVERRIDES.read_text(encoding="utf-8-sig"))
 
 
 def load_product_overrides() -> dict[str, dict[str, Any]]:
     if not PRODUCT_OVERRIDES.exists():
         return {}
-    return json.loads(PRODUCT_OVERRIDES.read_text(encoding="utf-8"))
+    return json.loads(PRODUCT_OVERRIDES.read_text(encoding="utf-8-sig"))
 
 
 def apply_photo_overrides(code: str, photos: list[Path], overrides: dict[str, dict[str, Any]]) -> list[Path]:
@@ -155,6 +155,9 @@ def build_catalog() -> dict[str, Any]:
 
         default_title = str(cell(row, "model") or cell(row, "title")).strip()
         product_override = product_overrides.get(code, {})
+        if product_override.get("hidden"):
+            continue
+
         title = str(product_override.get("title") or default_title).strip()
         is_sold = bool(product_override.get("sold"))
         slug = slugify(f"{code}-{title}")

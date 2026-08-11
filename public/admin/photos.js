@@ -38,9 +38,10 @@ function ensureOverride(code) {
 }
 
 function ensureProductOverride(code) {
-  if (!state.productOverrides[code]) state.productOverrides[code] = { title: "", sold: false };
+  if (!state.productOverrides[code]) state.productOverrides[code] = { title: "", sold: false, hidden: false };
   state.productOverrides[code].title ||= "";
   state.productOverrides[code].sold = Boolean(state.productOverrides[code].sold);
+  state.productOverrides[code].hidden = Boolean(state.productOverrides[code].hidden);
   return state.productOverrides[code];
 }
 
@@ -58,7 +59,9 @@ function renderList() {
     const button = document.createElement("button");
     button.className = `item ${state.selected === product.code ? "active" : ""}`;
     const sold = ensureProductOverride(product.code).sold;
-    button.innerHTML = `<strong>${escapeHtml(product.code)}</strong><span>${escapeHtml(product.customTitle || product.title)}</span><small>${sold ? "Vendido | " : ""}${product.sourcePhotos.length} arquivo(s)</small>`;
+    const hidden = ensureProductOverride(product.code).hidden;
+    const flags = [hidden ? "Oculto" : "", sold ? "Vendido" : ""].filter(Boolean).join(" | ");
+    button.innerHTML = `<strong>${escapeHtml(product.code)}</strong><span>${escapeHtml(product.customTitle || product.title)}</span><small>${flags ? `${flags} | ` : ""}${product.sourcePhotos.length} arquivo(s)</small>`;
     button.addEventListener("click", () => {
       state.selected = product.code;
       render();
@@ -127,6 +130,12 @@ function updateSold(code, sold) {
   renderList();
 }
 
+function updateHidden(code, hidden) {
+  const override = ensureProductOverride(code);
+  override.hidden = hidden;
+  renderList();
+}
+
 async function uploadMedia(code, input) {
   const file = input.files?.[0];
   if (!file) return;
@@ -176,6 +185,10 @@ function renderEditor() {
       <input id="sold-edit" type="checkbox" ${productOverride.sold ? "checked" : ""} />
       <span>Produto vendido</span>
     </label>
+    <label class="sold-toggle">
+      <input id="hidden-edit" type="checkbox" ${productOverride.hidden ? "checked" : ""} />
+      <span>Ocultar do catálogo</span>
+    </label>
     <label class="upload">
       <span>Carregar foto ou video</span>
       <input id="media-upload" type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime,video/webm" />
@@ -187,6 +200,9 @@ function renderEditor() {
   });
   tools.querySelector("#sold-edit").addEventListener("change", (event) => {
     updateSold(product.code, event.target.checked);
+  });
+  tools.querySelector("#hidden-edit").addEventListener("change", (event) => {
+    updateHidden(product.code, event.target.checked);
   });
   tools.querySelector("#media-upload").addEventListener("change", (event) => {
     uploadMedia(product.code, event.target).catch((error) => alert(error.message));
@@ -247,6 +263,7 @@ async function save() {
     const cleanedOverride = {};
     if (override.title) cleanedOverride.title = override.title;
     if (override.sold) cleanedOverride.sold = true;
+    if (override.hidden) cleanedOverride.hidden = true;
     if (Object.keys(cleanedOverride).length) productCleaned[code] = cleanedOverride;
   }
   const [response, productResponse] = await Promise.all([

@@ -150,7 +150,7 @@ nav {
 
 .product-tools {
   display: grid;
-  grid-template-columns: minmax(240px, 520px) minmax(150px, 180px) minmax(220px, 320px);
+  grid-template-columns: minmax(240px, 1fr) minmax(150px, 180px) minmax(170px, 210px) minmax(220px, 320px);
   gap: 12px;
   align-items: end;
   margin-bottom: 16px;
