@@ -243,7 +243,11 @@ async function save() {
       body: JSON.stringify(productCleaned),
     }),
   ]);
-  if (!response.ok || !productResponse.ok) throw new Error("Falha ao salvar");
+  if (!response.ok || !productResponse.ok) {
+    const failed = !response.ok ? response : productResponse;
+    const details = await failed.text().catch(() => "");
+    throw new Error(`Falha ao salvar (${failed.status}). ${details}`.trim());
+  }
   state.overrides = cleaned;
   state.productOverrides = productCleaned;
   els.save.textContent = "Salvo";
