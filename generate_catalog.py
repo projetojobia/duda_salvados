@@ -255,8 +255,8 @@ def calculate_reference_price(price_average: Any, price_high: Any, sale_price: f
         return 0.0
     reference_price = sum(valid_values) / len(valid_values)
     if sale_price > 0:
-        reference_price = min(reference_price, sale_price * 3)
-    return round(reference_price, 2)
+        reference_price = min(reference_price, sale_price * 2)
+    return round(reference_price)
 
 
 def calculate_discount_percent(sale_price: float, reference_price: float) -> int:
