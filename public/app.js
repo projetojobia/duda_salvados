@@ -114,8 +114,8 @@ function renderProducts() {
 }
 
 function renderSummary() {
-  const { products, categories, totalPotential, missingPhotos } = state.catalog.summary;
-  els.summary.textContent = `${products} produtos • ${categories} categorias • ${money.format(totalPotential)} em potencial • ${missingPhotos.length} sem foto`;
+  const { products, categories, missingPhotos } = state.catalog.summary;
+  els.summary.textContent = `${products} produtos • ${categories} categorias • ${missingPhotos.length} sem foto`;
 }
 
 async function boot() {
