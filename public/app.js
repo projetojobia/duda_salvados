@@ -72,7 +72,7 @@ function productMatches(product) {
   const haystack = normalize(
     `${product.code} ${product.title} ${product.description} ${product.category} ${product.brand} ${product.model}`,
   );
-  const displayStatus = product.sold ? "Vendido" : "Disponivel";
+  const displayStatus = product.sold ? "Vendido" : product.reserved ? "Reservado" : "Disponivel";
   return (
     (!state.search || haystack.includes(normalize(state.search))) &&
     (!state.category || product.category === state.category) &&
@@ -99,13 +99,14 @@ function renderProducts() {
     const title = node.querySelector("h2");
     const media = product.media?.[0] || (product.images?.[0] ? { type: "image", url: product.images[0] } : null);
     const isSold = Boolean(product.sold);
+    const isReserved = Boolean(product.reserved);
     const badge = discountLabel(product);
 
-    if (isSold) {
-      node.classList.add("sold");
+    if (isSold || isReserved) {
+      node.classList.add(isSold ? "sold" : "reserved");
       const soldStamp = document.createElement("div");
       soldStamp.className = "sold-stamp";
-      soldStamp.textContent = "Vendido";
+      soldStamp.textContent = isSold ? "Vendido" : "Reservado";
       photoWrap.append(soldStamp);
     }
 
@@ -129,16 +130,16 @@ function renderProducts() {
     }
 
     node.querySelector(".code").textContent = product.code;
-    node.querySelector(".status").textContent = isSold ? "Vendido" : badge;
-    node.querySelector(".status").hidden = !isSold && !badge;
+    node.querySelector(".status").textContent = isSold ? "Vendido" : isReserved ? "Reservado" : badge;
+    node.querySelector(".status").hidden = !isSold && !isReserved && !badge;
     title.textContent = product.title;
     node.querySelector(".desc").textContent = product.description;
     renderPrice(product, node.querySelector(".price"));
     node.querySelector(".condition").textContent = product.condition || "A conferir";
     node.querySelector(".quantity").textContent = stockLabel(product.quantity);
     const whatsapp = node.querySelector(".whatsapp");
-    if (isSold) {
-      whatsapp.textContent = "Produto vendido";
+    if (isSold || isReserved) {
+      whatsapp.textContent = isSold ? "Produto vendido" : "Produto reservado";
       whatsapp.removeAttribute("href");
       whatsapp.setAttribute("aria-disabled", "true");
     } else {

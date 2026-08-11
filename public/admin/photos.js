@@ -42,10 +42,11 @@ function ensureOverride(code) {
 
 function ensureProductOverride(code) {
   if (!state.productOverrides[code]) {
-    state.productOverrides[code] = { title: "", sold: false, hidden: false, price: "", referencePrice: "" };
+    state.productOverrides[code] = { title: "", sold: false, reserved: false, hidden: false, price: "", referencePrice: "" };
   }
   state.productOverrides[code].title ||= "";
   state.productOverrides[code].sold = Boolean(state.productOverrides[code].sold);
+  state.productOverrides[code].reserved = Boolean(state.productOverrides[code].reserved);
   state.productOverrides[code].hidden = Boolean(state.productOverrides[code].hidden);
   state.productOverrides[code].price ||= "";
   state.productOverrides[code].referencePrice ||= "";
@@ -66,8 +67,9 @@ function renderList() {
     const button = document.createElement("button");
     button.className = `item ${state.selected === product.code ? "active" : ""}`;
     const sold = ensureProductOverride(product.code).sold;
+    const reserved = ensureProductOverride(product.code).reserved;
     const hidden = ensureProductOverride(product.code).hidden;
-    const flags = [hidden ? "Oculto" : "", sold ? "Vendido" : ""].filter(Boolean).join(" | ");
+    const flags = [hidden ? "Oculto" : "", sold ? "Vendido" : "", reserved ? "Reservado" : ""].filter(Boolean).join(" | ");
     button.innerHTML = `<strong>${escapeHtml(product.code)}</strong><span>${escapeHtml(product.customTitle || product.title)}</span><small>${flags ? `${flags} | ` : ""}${product.sourcePhotos.length} arquivo(s)</small>`;
     button.addEventListener("click", () => {
       state.selected = product.code;
@@ -151,6 +153,16 @@ function updateReferencePrice(code, price) {
 function updateSold(code, sold) {
   const override = ensureProductOverride(code);
   override.sold = sold;
+  if (sold) override.reserved = false;
+  renderEditor();
+  renderList();
+}
+
+function updateReserved(code, reserved) {
+  const override = ensureProductOverride(code);
+  override.reserved = reserved;
+  if (reserved) override.sold = false;
+  renderEditor();
   renderList();
 }
 
@@ -218,6 +230,10 @@ function renderEditor() {
       <span>Produto vendido</span>
     </label>
     <label class="sold-toggle">
+      <input id="reserved-edit" type="checkbox" ${productOverride.reserved ? "checked" : ""} />
+      <span>Produto reservado</span>
+    </label>
+    <label class="sold-toggle">
       <input id="hidden-edit" type="checkbox" ${productOverride.hidden ? "checked" : ""} />
       <span>Ocultar do catálogo</span>
     </label>
@@ -238,6 +254,9 @@ function renderEditor() {
   });
   tools.querySelector("#sold-edit").addEventListener("change", (event) => {
     updateSold(product.code, event.target.checked);
+  });
+  tools.querySelector("#reserved-edit").addEventListener("change", (event) => {
+    updateReserved(product.code, event.target.checked);
   });
   tools.querySelector("#hidden-edit").addEventListener("change", (event) => {
     updateHidden(product.code, event.target.checked);
@@ -317,6 +336,7 @@ async function save() {
     const cleanedOverride = {};
     if (override.title) cleanedOverride.title = override.title;
     if (override.sold) cleanedOverride.sold = true;
+    if (override.reserved) cleanedOverride.reserved = true;
     if (override.hidden) cleanedOverride.hidden = true;
     if (override.price !== "" && Number.isFinite(Number(override.price))) cleanedOverride.price = Math.round(Number(override.price));
     if (override.referencePrice !== "" && Number.isFinite(Number(override.referencePrice))) {

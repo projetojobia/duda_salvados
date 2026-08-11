@@ -200,6 +200,7 @@ async function writeProductOperations(productUpdates) {
           ? ""
           : Math.round(Number(rawUpdate.referencePrice)),
       sold: Boolean(rawUpdate.sold),
+      reserved: Boolean(rawUpdate.reserved),
       hidden: Boolean(rawUpdate.hidden),
     };
     if (!Number.isFinite(safeUpdates[code].price)) safeUpdates[code].price = "";
@@ -235,6 +236,9 @@ async function writeProductOperations(productUpdates) {
     "        ws.cell(row, 24).value='Vendido'",
     "        if not ws.cell(row, 26).value:",
     "            ws.cell(row, 26).value=now",
+    "    elif item.get('reserved'):",
+    "        ws.cell(row, 10).value='Reservado'",
+    "        ws.cell(row, 24).value='Reservado'",
     "    elif item.get('hidden'):",
     "        ws.cell(row, 24).value='Oculto'",
     "    ws.cell(row, 31).value=now",

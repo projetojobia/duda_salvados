@@ -109,6 +109,9 @@ def apply_product_overrides_to_raw_values(sheet_name: str, raw_values: list[list
             row[23] = "Vendido"  # Status catalogo
             if not row[25]:
                 row[25] = now  # Data venda
+        elif override.get("reserved"):
+            row[9] = "Reservado"  # Status interno
+            row[23] = "Reservado"  # Status catalogo
         elif override.get("hidden"):
             row[23] = "Oculto"  # Status catalogo
         row[30] = now  # Ultima atualizacao

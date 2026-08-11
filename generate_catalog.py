@@ -155,7 +155,8 @@ def build_catalog() -> dict[str, Any]:
         status = str(cell(row, "status")).strip()
         catalog_status = str(cell(row, "catalog_status")).strip()
         status_is_sold = status == "Vendido" or catalog_status == "Vendido" or bool(product_override.get("sold"))
-        if status not in PUBLIC_STATUSES and not status_is_sold:
+        status_is_reserved = status == "Reservado" or catalog_status == "Reservado" or bool(product_override.get("reserved"))
+        if status not in PUBLIC_STATUSES and not status_is_sold and not status_is_reserved:
             skipped_sold += 1
             continue
 
@@ -165,6 +166,7 @@ def build_catalog() -> dict[str, Any]:
 
         title = str(product_override.get("title") or default_title).strip()
         is_sold = status_is_sold
+        is_reserved = status_is_reserved
         slug = slugify(f"{code}-{title}")
         image_urls: list[str] = []
         media_items: list[dict[str, str]] = []
@@ -209,6 +211,7 @@ def build_catalog() -> dict[str, Any]:
                 "working": str(cell(row, "working")).strip(),
                 "status": status,
                 "sold": is_sold,
+                "reserved": is_reserved,
                 "catalogStatus": catalog_status,
                 "location": str(cell(row, "location")).strip(),
                 "price": price,
