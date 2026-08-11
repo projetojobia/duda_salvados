@@ -34,4 +34,4 @@ Abra `http://127.0.0.1:8790/admin/photos` para escolher a foto principal, oculta
 
 As escolhas de fotos ficam em `catalog_photo_overrides.json`. Os titulos editados ficam em `catalog_product_overrides.json`. Arquivos enviados manualmente ficam em `catalog_manual_media/`.
 
-Depois rode `npm run catalog:build` para regenerar o catalogo.
+Use `Salvar escolhas` para gravar somente no computador. Use `Publicar catalogo` para salvar, regenerar o catalogo, criar um commit e enviar para o GitHub/Cloudflare.

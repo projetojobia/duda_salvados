@@ -3,6 +3,8 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import http from "node:http";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
@@ -12,6 +14,7 @@ const overridesPath = path.join(root, "catalog_photo_overrides.json");
 const productOverridesPath = path.join(root, "catalog_product_overrides.json");
 const manualMediaDir = path.join(root, "catalog_manual_media");
 const port = Number(process.env.PORT || 8790);
+const execFileAsync = promisify(execFile);
 
 const mime = {
   ".html": "text/html; charset=utf-8",
@@ -97,6 +100,24 @@ async function readJson(file, fallback) {
 function sendJson(res, value) {
   res.writeHead(200, { "content-type": mime[".json"], "cache-control": "no-store" });
   res.end(JSON.stringify(value, null, 2));
+}
+
+async function runCommand(command, args) {
+  try {
+    const { stdout, stderr } = await execFileAsync(command, args, {
+      cwd: root,
+      windowsHide: true,
+      maxBuffer: 1024 * 1024 * 8,
+    });
+    return { ok: true, stdout, stderr };
+  } catch (error) {
+    return {
+      ok: false,
+      stdout: error.stdout || "",
+      stderr: error.stderr || "",
+      message: error.message || String(error),
+    };
+  }
 }
 
 function safeLocalPhotoPath(raw) {
@@ -215,6 +236,57 @@ async function handleApi(req, res, url) {
     const target = path.join(folder, `${code}_${Date.now()}_${randomUUID().slice(0, 8)}_${base}${ext}`);
     await writeFile(target, filePart.body);
     sendJson(res, { ok: true, fileName: path.basename(target), path: target });
+    return;
+  }
+
+  if (url.pathname === "/api/publish" && req.method === "POST") {
+    const steps = [];
+    const build = await runCommand("npm.cmd", ["run", "catalog:build"]);
+    steps.push({ name: "catalog:build", ...build });
+    if (!build.ok) {
+      res.writeHead(500, { "content-type": mime[".json"], "cache-control": "no-store" });
+      res.end(JSON.stringify({ ok: false, step: "catalog:build", steps }, null, 2));
+      return;
+    }
+
+    const add = await runCommand("git", [
+      "add",
+      "catalog_photo_overrides.json",
+      "catalog_product_overrides.json",
+      "catalog_manual_media",
+      "public/catalog.json",
+      "public/assets/products",
+    ]);
+    steps.push({ name: "git add", ...add });
+    if (!add.ok) {
+      res.writeHead(500, { "content-type": mime[".json"], "cache-control": "no-store" });
+      res.end(JSON.stringify({ ok: false, step: "git add", steps }, null, 2));
+      return;
+    }
+
+    const diff = await runCommand("git", ["diff", "--cached", "--quiet"]);
+    if (diff.ok) {
+      sendJson(res, { ok: true, published: false, message: "Nada novo para publicar.", steps });
+      return;
+    }
+
+    const commit = await runCommand("git", ["commit", "-m", "Publish catalog updates"]);
+    steps.push({ name: "git commit", ...commit });
+    if (!commit.ok) {
+      res.writeHead(500, { "content-type": mime[".json"], "cache-control": "no-store" });
+      res.end(JSON.stringify({ ok: false, step: "git commit", steps }, null, 2));
+      return;
+    }
+
+    const push = await runCommand("git", ["push", "origin", "main"]);
+    steps.push({ name: "git push", ...push });
+    if (!push.ok) {
+      res.writeHead(500, { "content-type": mime[".json"], "cache-control": "no-store" });
+      res.end(JSON.stringify({ ok: false, step: "git push", steps }, null, 2));
+      return;
+    }
+
+    sendJson(res, { ok: true, published: true, message: "Catalogo publicado. O Cloudflare pode levar alguns segundos para atualizar.", steps });
     return;
   }
 

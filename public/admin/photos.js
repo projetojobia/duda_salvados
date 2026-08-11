@@ -13,6 +13,8 @@ const els = {
   search: document.querySelector("#search"),
   missing: document.querySelector("#missing"),
   save: document.querySelector("#save"),
+  publish: document.querySelector("#publish"),
+  publishStatus: document.querySelector("#publish-status"),
 };
 
 const normalize = (value) =>
@@ -291,6 +293,24 @@ async function save() {
   }, 1200);
 }
 
+async function publishCatalog() {
+  els.publish.disabled = true;
+  els.save.disabled = true;
+  els.publishStatus.textContent = "Salvando...";
+  await save();
+  els.publishStatus.textContent = "Publicando...";
+  const response = await fetch("/api/publish", { method: "POST" });
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok || !result.ok) {
+    const detail = result.step ? ` Etapa: ${result.step}.` : "";
+    throw new Error(`${result.message || "Falha ao publicar."}${detail}`);
+  }
+  els.publishStatus.textContent = result.message || "Publicado.";
+  setTimeout(() => {
+    els.publishStatus.textContent = "";
+  }, 6000);
+}
+
 async function loadData(selected = state.selected) {
   const response = await fetch("/api/photos");
   const data = await response.json();
@@ -310,5 +330,13 @@ els.missing.addEventListener("change", (event) => {
   renderList();
 });
 els.save.addEventListener("click", () => save().catch((error) => alert(error.message)));
+els.publish.addEventListener("click", () => {
+  publishCatalog()
+    .catch((error) => alert(error.message))
+    .finally(() => {
+      els.publish.disabled = false;
+      els.save.disabled = false;
+    });
+});
 
 loadData();

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T14:17:53",
+  "generatedAt": "2026-08-11T14:32:27",
   "source": {
     "spreadsheetId": "1kqLutUpgQwwnJgHmR7wrJ97zvQR8QZGRB6QyymM4GPU",
     "workbook": "Duda_Salvados_Hermes_GoogleSheets_v2_dashboard_executivo.xlsx"
@@ -345,8 +345,8 @@
     },
     {
       "code": "DS012",
-      "slug": "ds012-xicara-ceramica-branca-150-ml-live-sub",
-      "title": "Xicara ceramica branca 150 ml Live Sub",
+      "slug": "ds012-jogo-8-xicaras-ceramica-branca-150-ml-live-sub",
+      "title": "Jogo 8 Xicaras ceramica branca 150 ml Live Sub",
       "description": "Jogo com 8 xicaras de ceramica branca Live Sub, 150 ml, ideal para cafe, lembrancinhas ou personalizacao por sublimacao. Produto em caixa com protecao individual. Conferir unidades antes da entrega.",
       "category": "Casa e cozinha",
       "brand": "Live Sub",
@@ -361,20 +361,20 @@
       "price": "50",
       "quantity": "2",
       "images": [
-        "/assets/products/ds012-xicara-ceramica-branca-150-ml-live-sub-01.webp",
-        "/assets/products/ds012-xicara-ceramica-branca-150-ml-live-sub-02.webp"
+        "/assets/products/ds012-jogo-8-xicaras-ceramica-branca-150-ml-live-sub-01.webp",
+        "/assets/products/ds012-jogo-8-xicaras-ceramica-branca-150-ml-live-sub-02.webp"
       ],
       "media": [
         {
           "type": "image",
-          "url": "/assets/products/ds012-xicara-ceramica-branca-150-ml-live-sub-01.webp"
+          "url": "/assets/products/ds012-jogo-8-xicaras-ceramica-branca-150-ml-live-sub-01.webp"
         },
         {
           "type": "image",
-          "url": "/assets/products/ds012-xicara-ceramica-branca-150-ml-live-sub-02.webp"
+          "url": "/assets/products/ds012-jogo-8-xicaras-ceramica-branca-150-ml-live-sub-02.webp"
         }
       ],
-      "whatsAppText": "Ola, tenho interesse no DS012 - Xicara ceramica branca 150 ml Live Sub"
+      "whatsAppText": "Ola, tenho interesse no DS012 - Jogo 8 Xicaras ceramica branca 150 ml Live Sub"
     },
     {
       "code": "DS013",
