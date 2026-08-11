@@ -27,6 +27,12 @@ function parsePrice(value) {
   return Number.isFinite(number) ? number : 0;
 }
 
+function stockLabel(value) {
+  const quantity = Number(String(value || "1").replace(",", "."));
+  if (!Number.isFinite(quantity) || quantity <= 1) return "Última unidade";
+  return `${Math.trunc(quantity)} em estoque`;
+}
+
 function renderFilters() {
   els.category.replaceChildren(new Option("Todas", ""));
   for (const category of state.catalog.categories) {
@@ -100,7 +106,7 @@ function renderProducts() {
     node.querySelector(".desc").textContent = product.description;
     node.querySelector(".price").textContent = priceValue ? money.format(priceValue) : product.price;
     node.querySelector(".condition").textContent = product.condition || "A conferir";
-    node.querySelector(".quantity").textContent = product.quantity;
+    node.querySelector(".quantity").textContent = stockLabel(product.quantity);
     const whatsapp = node.querySelector(".whatsapp");
     if (isSold) {
       whatsapp.textContent = "Produto vendido";

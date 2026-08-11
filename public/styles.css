@@ -196,7 +196,7 @@ h2 {
 
 dl {
   display: grid;
-  grid-template-columns: 1fr 1fr 64px;
+  grid-template-columns: 1fr 1fr minmax(96px, auto);
   gap: 8px;
   margin: 0;
 }
