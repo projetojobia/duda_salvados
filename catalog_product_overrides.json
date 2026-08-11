@@ -61,6 +61,7 @@
     "referencePrice": 69
   },
   "DS011": {
+    "sold": true,
     "price": 200,
     "referencePrice": 290
   },
