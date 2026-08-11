@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "catalog:build": "python generate_catalog.py",
+    "photos:admin": "node photo_admin_server.js",
     "cf:dev": "wrangler dev",
     "cf:check": "wrangler check",
     "cf:deploy": "wrangler deploy",

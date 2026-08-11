@@ -16,6 +16,7 @@ from PIL import Image, ImageOps
 
 WORKBOOK = Path(r"C:\Users\User\duda\Duda_Salvados_Hermes_GoogleSheets_v2_dashboard_executivo.xlsx")
 PHOTO_REPORT = Path(r"C:\Users\User\duda\photo_rename_report.csv")
+PHOTO_OVERRIDES = Path(r"C:\Users\User\duda\catalog_photo_overrides.json")
 PUBLIC_DIR = Path(r"C:\Users\User\duda\public")
 ASSETS_DIR = PUBLIC_DIR / "assets" / "products"
 DATA_PATH = PUBLIC_DIR / "catalog.json"
@@ -71,6 +72,31 @@ def load_photo_map() -> dict[str, list[Path]]:
     return {code: sorted(paths) for code, paths in photos.items()}
 
 
+def load_photo_overrides() -> dict[str, dict[str, Any]]:
+    if not PHOTO_OVERRIDES.exists():
+        return {}
+    return json.loads(PHOTO_OVERRIDES.read_text(encoding="utf-8"))
+
+
+def apply_photo_overrides(code: str, photos: list[Path], overrides: dict[str, dict[str, Any]]) -> list[Path]:
+    override = overrides.get(code, {})
+    hidden = set(override.get("hidden") or [])
+    preferred_order = list(override.get("order") or [])
+    primary = override.get("primary") or ""
+    by_name = {photo.name: photo for photo in photos if photo.name not in hidden}
+    ordered: list[Path] = []
+
+    if primary and primary in by_name:
+        ordered.append(by_name.pop(primary))
+
+    for name in preferred_order:
+        if name in by_name:
+            ordered.append(by_name.pop(name))
+
+    ordered.extend(by_name[name] for name in sorted(by_name))
+    return ordered
+
+
 def optimize_image(source: Path, target: Path) -> None:
     target.parent.mkdir(parents=True, exist_ok=True)
     with Image.open(source) as img:
@@ -83,6 +109,7 @@ def optimize_image(source: Path, target: Path) -> None:
 
 def build_catalog() -> dict[str, Any]:
     photos_by_code = load_photo_map()
+    photo_overrides = load_photo_overrides()
     wb = load_workbook(WORKBOOK, data_only=True)
     ws = wb["Produtos"]
 
@@ -106,7 +133,8 @@ def build_catalog() -> dict[str, Any]:
         title = str(cell(row, "model") or cell(row, "title")).strip()
         slug = slugify(f"{code}-{title}")
         image_urls: list[str] = []
-        for index, source in enumerate(photos_by_code.get(code, []), start=1):
+        curated_photos = apply_photo_overrides(code, photos_by_code.get(code, []), photo_overrides)
+        for index, source in enumerate(curated_photos, start=1):
             image_name = f"{slug}-{index:02d}.webp"
             target = ASSETS_DIR / image_name
             optimize_image(source, target)
