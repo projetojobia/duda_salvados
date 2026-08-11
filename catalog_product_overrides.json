@@ -32,6 +32,14 @@
     "sold": true
   },
   "DS004": {
-    "title": "Mini Câmera digital portátil retrô De chaveiro"
+    "title": "Mini Câmera digital portátil retrô De chaveiro",
+    "referencePrice": 65
+  },
+  "DS005": {
+    "price": 90,
+    "referencePrice": 190
+  },
+  "DS006": {
+    "price": 75
   }
 }
