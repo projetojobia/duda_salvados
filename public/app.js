@@ -61,6 +61,61 @@ function stockLabel(value) {
   return `${Math.trunc(quantity)} em estoque`;
 }
 
+function mediaItems(product) {
+  if (Array.isArray(product.media) && product.media.length) return product.media;
+  return (product.images || []).map((url) => ({ type: "image", url }));
+}
+
+function renderMedia(product, photoWrap, fallback, items, index) {
+  photoWrap.querySelector(".photo")?.remove();
+  const media = items[index];
+  fallback.hidden = Boolean(media?.url);
+  if (!media?.url) return;
+
+  if (media.type === "video") {
+    const video = document.createElement("video");
+    video.className = "photo";
+    video.src = media.url;
+    video.controls = true;
+    video.muted = true;
+    video.preload = "metadata";
+    photoWrap.prepend(video);
+    return;
+  }
+
+  const img = document.createElement("img");
+  img.className = "photo";
+  img.alt = product.title;
+  img.loading = "lazy";
+  img.src = media.url;
+  photoWrap.prepend(img);
+}
+
+function addMediaControls(product, photoWrap, fallback) {
+  const items = mediaItems(product);
+  let index = 0;
+  renderMedia(product, photoWrap, fallback, items, index);
+  if (items.length <= 1) return;
+
+  const controls = document.createElement("div");
+  controls.className = "media-controls";
+  controls.innerHTML = `
+    <button type="button" aria-label="Foto anterior">&lsaquo;</button>
+    <span>${index + 1}/${items.length}</span>
+    <button type="button" aria-label="Proxima foto">&rsaquo;</button>
+  `;
+  const [previous, next] = controls.querySelectorAll("button");
+  const counter = controls.querySelector("span");
+  const show = (nextIndex) => {
+    index = (nextIndex + items.length) % items.length;
+    renderMedia(product, photoWrap, fallback, items, index);
+    counter.textContent = `${index + 1}/${items.length}`;
+  };
+  previous.addEventListener("click", () => show(index - 1));
+  next.addEventListener("click", () => show(index + 1));
+  photoWrap.append(controls);
+}
+
 function renderFilters() {
   els.category.replaceChildren(new Option("Todas", ""));
   for (const category of state.catalog.categories) {
@@ -97,7 +152,6 @@ function renderProducts() {
     const photoWrap = node.querySelector(".photo-wrap");
     const fallback = node.querySelector(".photo-fallback");
     const title = node.querySelector("h2");
-    const media = product.media?.[0] || (product.images?.[0] ? { type: "image", url: product.images[0] } : null);
     const isSold = Boolean(product.sold);
     const isReserved = Boolean(product.reserved);
     const badge = discountLabel(product);
@@ -110,24 +164,7 @@ function renderProducts() {
       photoWrap.append(soldStamp);
     }
 
-    if (media?.type === "video") {
-      const video = document.createElement("video");
-      video.className = "photo";
-      video.src = media.url;
-      video.controls = true;
-      video.muted = true;
-      video.preload = "metadata";
-      photoWrap.prepend(video);
-      fallback.hidden = true;
-    } else if (media?.url) {
-      const img = document.createElement("img");
-      img.className = "photo";
-      img.alt = product.title;
-      img.loading = "lazy";
-      img.src = media.url;
-      photoWrap.prepend(img);
-      fallback.hidden = true;
-    }
+    addMediaControls(product, photoWrap, fallback);
 
     node.querySelector(".code").textContent = product.code;
     node.querySelector(".status").textContent = isSold ? "Vendido" : isReserved ? "Reservado" : badge;

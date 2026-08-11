@@ -133,6 +133,43 @@ select {
   font-weight: 700;
 }
 
+.media-controls {
+  position: absolute;
+  inset: auto 10px 10px;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 38px 1fr 38px;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.media-controls button,
+.media-controls span {
+  min-height: 34px;
+  border: 1px solid rgba(23, 33, 27, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 900;
+  box-shadow: 0 6px 18px rgba(23, 33, 27, 0.12);
+}
+
+.media-controls button {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.media-controls span {
+  display: grid;
+  place-items: center;
+  min-height: 30px;
+  justify-self: center;
+  padding: 0 10px;
+  font-size: 12px;
+}
+
 .sold-stamp {
   position: absolute;
   left: 50%;
