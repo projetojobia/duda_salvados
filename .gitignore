@@ -1,0 +1,13 @@
+.wrangler/
+.wrangler-config/
+.dev.vars
+node_modules/
+__pycache__/
+*.pyc
+*.xlsx
+~$*
+client_secret.json
+Fotos_Organizadas/
+contact_sheet_*.jpg
+*_tmp_*.py
+_tmp_*.py

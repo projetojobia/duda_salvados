@@ -1,0 +1,15 @@
+{
+  "name": "duda-salvados-cloudflare",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "catalog:build": "python generate_catalog.py",
+    "cf:dev": "wrangler dev",
+    "cf:check": "wrangler check",
+    "cf:deploy": "wrangler deploy",
+    "cf:dry-run": "wrangler deploy --dry-run"
+  },
+  "devDependencies": {
+    "wrangler": "latest"
+  }
+}

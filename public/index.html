@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Duda Salvados</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Catálogo</p>
+        <h1>Duda Salvados</h1>
+      </div>
+      <div class="summary" id="summary"></div>
+    </header>
+
+    <main>
+      <section class="controls" aria-label="Filtros do catálogo">
+        <label class="search">
+          <span>Buscar</span>
+          <input id="search" type="search" placeholder="Produto, código, categoria..." />
+        </label>
+        <label>
+          <span>Categoria</span>
+          <select id="category"></select>
+        </label>
+        <label>
+          <span>Status</span>
+          <select id="status">
+            <option value="">Todos</option>
+            <option value="Disponível">Disponível</option>
+            <option value="Pronto para publicar">Pronto para publicar</option>
+            <option value="Publicado">Publicado</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="grid" id="products" aria-live="polite"></section>
+    </main>
+
+    <template id="product-template">
+      <article class="product">
+        <div class="photo-wrap">
+          <img class="photo" alt="" loading="lazy" />
+          <div class="photo-fallback">Sem foto</div>
+        </div>
+        <div class="product-body">
+          <div class="line">
+            <span class="code"></span>
+            <span class="status"></span>
+          </div>
+          <h2></h2>
+          <p class="desc"></p>
+          <dl>
+            <div><dt>Preço</dt><dd class="price"></dd></div>
+            <div><dt>Condição</dt><dd class="condition"></dd></div>
+            <div><dt>Qtd.</dt><dd class="quantity"></dd></div>
+          </dl>
+          <a class="whatsapp" target="_blank" rel="noreferrer">Chamar no WhatsApp</a>
+        </div>
+      </article>
+    </template>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
