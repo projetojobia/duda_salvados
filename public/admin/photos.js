@@ -210,6 +210,22 @@ function renderEditor() {
     uploadMedia(product.code, event.target).catch((error) => alert(error.message));
   });
 
+  const source = document.createElement("div");
+  source.className = "pricing-source";
+  const sourceUrl = product.pricingSourceUrl || "";
+  source.innerHTML = `
+    <div>
+      <strong>Referencia de preco</strong>
+      <p>${escapeHtml(product.pricingSource || "Nenhuma referencia registrada na planilha.")}</p>
+    </div>
+    ${
+      sourceUrl
+        ? `<a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noreferrer">Abrir link</a>`
+        : `<span>Sem link direto</span>`
+    }
+  `;
+  els.editor.append(source);
+
   if (!photos.length) {
     const empty = document.createElement("p");
     empty.className = "empty";

@@ -13,6 +13,7 @@ const reportPath = path.join(root, "photo_rename_report.csv");
 const overridesPath = path.join(root, "catalog_photo_overrides.json");
 const productOverridesPath = path.join(root, "catalog_product_overrides.json");
 const manualMediaDir = path.join(root, "catalog_manual_media");
+const workbookPath = path.join(root, "Duda_Salvados_Hermes_GoogleSheets_v2_dashboard_executivo.xlsx");
 const port = Number(process.env.PORT || 8790);
 const execFileAsync = promisify(execFile);
 
@@ -97,6 +98,36 @@ async function readJson(file, fallback) {
   return JSON.parse(text.replace(/^\uFEFF/, ""));
 }
 
+function extractFirstUrl(text) {
+  const match = String(text || "").match(/https?:\/\/[^\s)"'<]+/i);
+  return match?.[0] || "";
+}
+
+async function readPricingSources() {
+  if (!existsSync(workbookPath)) return {};
+  const script = [
+    "import json, openpyxl, sys",
+    "wb=openpyxl.load_workbook(sys.argv[1], data_only=True)",
+    "ws=wb['Produtos']",
+    "items={}",
+    "for row in ws.iter_rows(min_row=2, max_row=301, values_only=True):",
+    "    code=str(row[0] or '').strip()",
+    "    if code:",
+    "        items[code]=str(row[16] or '').strip()",
+    "print(json.dumps(items, ensure_ascii=False))",
+  ].join("\n");
+  try {
+    const { stdout } = await execFileAsync("python", ["-c", script, workbookPath], {
+      cwd: root,
+      windowsHide: true,
+      maxBuffer: 1024 * 1024 * 4,
+    });
+    return JSON.parse(stdout || "{}");
+  } catch {
+    return {};
+  }
+}
+
 function sendJson(res, value) {
   res.writeHead(200, { "content-type": mime[".json"], "cache-control": "no-store" });
   res.end(JSON.stringify(value, null, 2));
@@ -179,12 +210,13 @@ function parseMultipart(buffer, contentType) {
 
 async function handleApi(req, res, url) {
   if (url.pathname === "/api/photos") {
-    const [catalog, reportRows, manualRows, overrides, productOverrides] = await Promise.all([
+    const [catalog, reportRows, manualRows, overrides, productOverrides, pricingSources] = await Promise.all([
       readJson(path.join(publicDir, "catalog.json"), { products: [] }),
       readPhotoReport(),
       readManualMedia(),
       readJson(overridesPath, {}),
       readJson(productOverridesPath, {}),
+      readPricingSources(),
     ]);
     const rows = [...reportRows, ...manualRows];
     const products = catalog.products.map((product) => ({
@@ -194,6 +226,8 @@ async function handleApi(req, res, url) {
       category: product.category,
       price: product.price,
       status: product.status,
+      pricingSource: pricingSources[product.code] || "",
+      pricingSourceUrl: extractFirstUrl(pricingSources[product.code]),
       currentImages: product.images,
       sourcePhotos: rows
         .filter((row) => row.Codigo === product.code)

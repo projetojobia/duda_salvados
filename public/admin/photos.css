@@ -208,6 +208,42 @@ nav {
   padding: 0 12px;
 }
 
+.pricing-source {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 0 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--panel);
+  padding: 10px 12px;
+}
+
+.pricing-source strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.pricing-source p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.pricing-source a,
+.pricing-source span {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.pricing-source span {
+  color: var(--muted);
+}
+
 .photos {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -284,6 +320,11 @@ nav {
   .editor-head,
   .product-tools {
     grid-template-columns: 1fr;
+  }
+
+  .pricing-source {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .editor-head {
