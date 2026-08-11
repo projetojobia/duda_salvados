@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T14:49:39",
+  "generatedAt": "2026-08-11T16:14:37",
   "source": {
     "spreadsheetId": "1kqLutUpgQwwnJgHmR7wrJ97zvQR8QZGRB6QyymM4GPU",
     "workbook": "Duda_Salvados_Hermes_GoogleSheets_v2_dashboard_executivo.xlsx"
@@ -10,7 +10,8 @@
     "totalPotential": 4780.0,
     "missingPhotos": [
       "DS002",
-      "DS004"
+      "DS004",
+      "DS025"
     ],
     "skippedNonPublic": 1
   },
@@ -473,8 +474,8 @@
     },
     {
       "code": "DS016",
-      "slug": "ds016-yx-370-precision-screwdriver-6-em-1",
-      "title": "YX-370 Precision Screwdriver 6 em 1",
+      "slug": "ds016-jogo-de-chaves-precision-screwdriver-6-em-1",
+      "title": "Jogo de chaves Precision Screwdriver 6 em 1",
       "description": "Kit de chaves de precisao Yaxun YX-370 6 em 1, ideal para manutencao de celulares, notebooks e eletronicos. Acompanha estojo cilindrico e pontas de precisao AP2, T2, PH000, PH0000, W2.5 e Y000. Produto novo em embalagem.",
       "category": "Ferramentas",
       "brand": "Yaxun",
@@ -489,25 +490,25 @@
       "price": "80",
       "quantity": "2",
       "images": [
-        "/assets/products/ds016-yx-370-precision-screwdriver-6-em-1-01.webp",
-        "/assets/products/ds016-yx-370-precision-screwdriver-6-em-1-02.webp",
-        "/assets/products/ds016-yx-370-precision-screwdriver-6-em-1-03.webp"
+        "/assets/products/ds016-jogo-de-chaves-precision-screwdriver-6-em-1-01.webp",
+        "/assets/products/ds016-jogo-de-chaves-precision-screwdriver-6-em-1-02.webp",
+        "/assets/products/ds016-jogo-de-chaves-precision-screwdriver-6-em-1-03.webp"
       ],
       "media": [
         {
           "type": "image",
-          "url": "/assets/products/ds016-yx-370-precision-screwdriver-6-em-1-01.webp"
+          "url": "/assets/products/ds016-jogo-de-chaves-precision-screwdriver-6-em-1-01.webp"
         },
         {
           "type": "image",
-          "url": "/assets/products/ds016-yx-370-precision-screwdriver-6-em-1-02.webp"
+          "url": "/assets/products/ds016-jogo-de-chaves-precision-screwdriver-6-em-1-02.webp"
         },
         {
           "type": "image",
-          "url": "/assets/products/ds016-yx-370-precision-screwdriver-6-em-1-03.webp"
+          "url": "/assets/products/ds016-jogo-de-chaves-precision-screwdriver-6-em-1-03.webp"
         }
       ],
-      "whatsAppText": "Ola, tenho interesse no DS016 - YX-370 Precision Screwdriver 6 em 1"
+      "whatsAppText": "Ola, tenho interesse no DS016 - Jogo de chaves Precision Screwdriver 6 em 1"
     },
     {
       "code": "DS017",
@@ -628,8 +629,8 @@
     },
     {
       "code": "DS021",
-      "slug": "ds021-ilink-brush-hair-dryer-and-styler-220v",
-      "title": "ILINK Brush Hair Dryer and Styler 220V",
+      "slug": "ds021-escova-brush-hair-dryer-and-styler-220v",
+      "title": "Escova Brush Hair Dryer and Styler 220V",
       "description": "Escova secadora/modeladora ILINK Brush 220V, para secar, alinhar e modelar os cabelos. Cor preta com detalhe verde/azul. Acompanha caixa e manual. Produto 220V; recomenda-se testar antes da retirada/entrega.",
       "category": "Beleza e cuidados pessoais",
       "brand": "ILINK",
@@ -644,20 +645,20 @@
       "price": "40",
       "quantity": "1",
       "images": [
-        "/assets/products/ds021-ilink-brush-hair-dryer-and-styler-220v-01.webp",
-        "/assets/products/ds021-ilink-brush-hair-dryer-and-styler-220v-02.webp"
+        "/assets/products/ds021-escova-brush-hair-dryer-and-styler-220v-01.webp",
+        "/assets/products/ds021-escova-brush-hair-dryer-and-styler-220v-02.webp"
       ],
       "media": [
         {
           "type": "image",
-          "url": "/assets/products/ds021-ilink-brush-hair-dryer-and-styler-220v-01.webp"
+          "url": "/assets/products/ds021-escova-brush-hair-dryer-and-styler-220v-01.webp"
         },
         {
           "type": "image",
-          "url": "/assets/products/ds021-ilink-brush-hair-dryer-and-styler-220v-02.webp"
+          "url": "/assets/products/ds021-escova-brush-hair-dryer-and-styler-220v-02.webp"
         }
       ],
-      "whatsAppText": "Ola, tenho interesse no DS021 - ILINK Brush Hair Dryer and Styler 220V"
+      "whatsAppText": "Ola, tenho interesse no DS021 - Escova Brush Hair Dryer and Styler 220V"
     },
     {
       "code": "DS022",
@@ -765,21 +766,14 @@
       "location": "A1",
       "price": "70",
       "quantity": "1",
-      "images": [
-        "/assets/products/ds025-esmalteiro-expositor-de-esmaltes-5-prateleiras-branco-marrom-01.webp"
-      ],
-      "media": [
-        {
-          "type": "image",
-          "url": "/assets/products/ds025-esmalteiro-expositor-de-esmaltes-5-prateleiras-branco-marrom-01.webp"
-        }
-      ],
+      "images": [],
+      "media": [],
       "whatsAppText": "Ola, tenho interesse no DS025 - Esmalteiro expositor de esmaltes 5 prateleiras branco/marrom"
     },
     {
       "code": "DS026",
-      "slug": "ds026-bpf-050-w01-cb",
-      "title": "BPF-050 W01 CB",
+      "slug": "ds026-bomba-para-piscina-bpf-050-w01-cb",
+      "title": "Bomba para Piscina BPF-050 W01 CB",
       "description": "Motobomba de piscina Sibrape/WEG BPF-050, 1/2 CV, bivolt, eixo inox, indicada para filtragem e recirculacao de agua. Produto usado, sem caixa. Conferir funcionamento eletrico e conexoes antes da venda.",
       "category": "Casa e jardim",
       "brand": "Sibrape",
@@ -794,25 +788,25 @@
       "price": "500",
       "quantity": "1",
       "images": [
-        "/assets/products/ds026-bpf-050-w01-cb-01.webp",
-        "/assets/products/ds026-bpf-050-w01-cb-02.webp",
-        "/assets/products/ds026-bpf-050-w01-cb-03.webp"
+        "/assets/products/ds026-bomba-para-piscina-bpf-050-w01-cb-01.webp",
+        "/assets/products/ds026-bomba-para-piscina-bpf-050-w01-cb-02.webp",
+        "/assets/products/ds026-bomba-para-piscina-bpf-050-w01-cb-03.webp"
       ],
       "media": [
         {
           "type": "image",
-          "url": "/assets/products/ds026-bpf-050-w01-cb-01.webp"
+          "url": "/assets/products/ds026-bomba-para-piscina-bpf-050-w01-cb-01.webp"
         },
         {
           "type": "image",
-          "url": "/assets/products/ds026-bpf-050-w01-cb-02.webp"
+          "url": "/assets/products/ds026-bomba-para-piscina-bpf-050-w01-cb-02.webp"
         },
         {
           "type": "image",
-          "url": "/assets/products/ds026-bpf-050-w01-cb-03.webp"
+          "url": "/assets/products/ds026-bomba-para-piscina-bpf-050-w01-cb-03.webp"
         }
       ],
-      "whatsAppText": "Ola, tenho interesse no DS026 - BPF-050 W01 CB"
+      "whatsAppText": "Ola, tenho interesse no DS026 - Bomba para Piscina BPF-050 W01 CB"
     },
     {
       "code": "DS027",
@@ -1025,25 +1019,20 @@
       "price": "75",
       "quantity": "1",
       "images": [
-        "/assets/products/ds033-suporte-articulado-para-tv-32-75-01.webp",
-        "/assets/products/ds033-suporte-articulado-para-tv-32-75-02.webp"
+        "/assets/products/ds033-suporte-articulado-para-tv-32-75-01.webp"
       ],
       "media": [
         {
           "type": "image",
           "url": "/assets/products/ds033-suporte-articulado-para-tv-32-75-01.webp"
-        },
-        {
-          "type": "image",
-          "url": "/assets/products/ds033-suporte-articulado-para-tv-32-75-02.webp"
         }
       ],
       "whatsAppText": "Ola, tenho interesse no DS033 - Suporte articulado para TV 32-75"
     },
     {
       "code": "DS034",
-      "slug": "ds034-percarbonato-de-sodio-tira-manchas",
-      "title": "Percarbonato de sódio tira manchas",
+      "slug": "ds034-tira-manchas-calisul",
+      "title": "Tira manchas Calisul",
       "description": "Calisul tira manchas com percarbonato de sódio, indicado para limpeza doméstica e remoção de manchas. Produto novo.",
       "category": "Casa e limpeza",
       "brand": "Calisul",
@@ -1058,15 +1047,15 @@
       "price": "25",
       "quantity": "1",
       "images": [
-        "/assets/products/ds034-percarbonato-de-sodio-tira-manchas-01.webp"
+        "/assets/products/ds034-tira-manchas-calisul-01.webp"
       ],
       "media": [
         {
           "type": "image",
-          "url": "/assets/products/ds034-percarbonato-de-sodio-tira-manchas-01.webp"
+          "url": "/assets/products/ds034-tira-manchas-calisul-01.webp"
         }
       ],
-      "whatsAppText": "Ola, tenho interesse no DS034 - Percarbonato de sódio tira manchas"
+      "whatsAppText": "Ola, tenho interesse no DS034 - Tira manchas Calisul"
     },
     {
       "code": "DS035",
@@ -1294,8 +1283,8 @@
     },
     {
       "code": "DS043",
-      "slug": "ds043-cafe-com-deus-pai",
-      "title": "Café com Deus Pai",
+      "slug": "ds043-livro-cafe-com-deus-pai",
+      "title": "Livro Café com Deus Pai",
       "description": "Livro Café com Deus Pai, edição nova, porções diárias de amor, de Junior Rostirola. Produto novo e lacrado.",
       "category": "Livros e religião",
       "brand": "Junior Rostirola",
@@ -1310,15 +1299,15 @@
       "price": "25",
       "quantity": "1",
       "images": [
-        "/assets/products/ds043-cafe-com-deus-pai-01.webp"
+        "/assets/products/ds043-livro-cafe-com-deus-pai-01.webp"
       ],
       "media": [
         {
           "type": "image",
-          "url": "/assets/products/ds043-cafe-com-deus-pai-01.webp"
+          "url": "/assets/products/ds043-livro-cafe-com-deus-pai-01.webp"
         }
       ],
-      "whatsAppText": "Ola, tenho interesse no DS043 - Café com Deus Pai"
+      "whatsAppText": "Ola, tenho interesse no DS043 - Livro Café com Deus Pai"
     },
     {
       "code": "DS044",
@@ -2045,17 +2034,12 @@
       "price": "12",
       "quantity": "1",
       "images": [
-        "/assets/products/ds068-necessaire-feminina-preta-01.webp",
-        "/assets/products/ds068-necessaire-feminina-preta-02.webp"
+        "/assets/products/ds068-necessaire-feminina-preta-01.webp"
       ],
       "media": [
         {
           "type": "image",
           "url": "/assets/products/ds068-necessaire-feminina-preta-01.webp"
-        },
-        {
-          "type": "image",
-          "url": "/assets/products/ds068-necessaire-feminina-preta-02.webp"
         }
       ],
       "whatsAppText": "Ola, tenho interesse no DS068 - Nécessaire feminina preta"
@@ -2100,7 +2084,7 @@
       "tested": "Não se aplica",
       "working": "Produto eletrônico decorativo; conferir funcionamento da luz, cabo USB e integridade antes de publicar/entregar.",
       "status": "Pronto para publicar",
-      "sold": false,
+      "sold": true,
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "8",

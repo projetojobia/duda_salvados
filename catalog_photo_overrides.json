@@ -24,5 +24,97 @@
       "DS010_chaleira_eletrica_onistek_01.jpg"
     ],
     "hidden": []
+  },
+  "DS015": {
+    "primary": "",
+    "order": [
+      "DS015_jogo_de_formoes_mtx_02.jpg",
+      "DS015_jogo_de_formoes_mtx_01.jpg"
+    ],
+    "hidden": []
+  },
+  "DS016": {
+    "primary": "",
+    "order": [
+      "DS016_kit_chaves_de_precisao_yaxun_yx370_03.jpg",
+      "DS016_kit_chaves_de_precisao_yaxun_yx370_01.jpg",
+      "DS016_kit_chaves_de_precisao_yaxun_yx370_02.jpg"
+    ],
+    "hidden": []
+  },
+  "DS018": {
+    "primary": "",
+    "order": [
+      "DS018_patins_inline_roxo_02.jpg",
+      "DS018_patins_inline_roxo_01.jpg"
+    ],
+    "hidden": []
+  },
+  "DS024": {
+    "primary": "",
+    "order": [
+      "DS024_kit_6_carrinhos_die_cast_02.jpg",
+      "DS024_kit_6_carrinhos_die_cast_01.jpg"
+    ],
+    "hidden": []
+  },
+  "DS025": {
+    "primary": "",
+    "order": [],
+    "hidden": [
+      "DS025_pijama_infantil_dinossauro_80_cm_01.jpg"
+    ]
+  },
+  "DS028": {
+    "primary": "",
+    "order": [
+      "DS028_banheira_de_bebe_adoleta_15l_rosa_02.jpg",
+      "DS028_banheira_de_bebe_adoleta_15l_rosa_01.jpg"
+    ],
+    "hidden": []
+  },
+  "DS029": {
+    "primary": "",
+    "order": [
+      "DS029_babuche_bege_02.jpg",
+      "DS029_babuche_bege_01.jpg"
+    ],
+    "hidden": []
+  },
+  "DS031": {
+    "primary": "",
+    "order": [
+      "DS031_caixas_organizadoras_kit_12_02.jpg",
+      "DS031_caixas_organizadoras_kit_12_01.jpg"
+    ],
+    "hidden": []
+  },
+  "DS033": {
+    "primary": "",
+    "order": [
+      "DS033_suporte_articulado_para_tv_02.jpg",
+      "DS033_suporte_articulado_para_tv_01.jpg"
+    ],
+    "hidden": [
+      "DS033_suporte_articulado_para_tv_01.jpg"
+    ]
+  },
+  "DS046": {
+    "primary": "",
+    "order": [
+      "DS046_par_de_palhetas_22_26_01.jpg",
+      "DS046_par_de_palhetas_22_26_02.jpg"
+    ],
+    "hidden": []
+  },
+  "DS068": {
+    "primary": "",
+    "order": [
+      "DS068_necessaire_feminina_preta_02.jpg",
+      "DS068_necessaire_feminina_preta_01.jpg"
+    ],
+    "hidden": [
+      "DS068_necessaire_feminina_preta_01.jpg"
+    ]
   }
 }
