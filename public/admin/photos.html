@@ -12,23 +12,13 @@
         <p>Admin local</p>
         <h1>Curadoria de fotos</h1>
       </div>
-      <div class="header-actions">
-        <span id="publish-status" role="status"></span>
-        <button id="publish">Publicar catálogo</button>
-        <button id="save">Salvar escolhas</button>
-      </div>
     </header>
 
-    <section class="dashboard" id="dashboard" aria-label="Painel operacional">
-      <div class="dashboard-head">
-        <div>
-          <p>Painel</p>
-          <h2>Resumo operacional e financeiro</h2>
-        </div>
-        <button id="refresh-dashboard">Atualizar painel</button>
-      </div>
-      <div class="dashboard-grid" id="dashboard-grid">
-        <p class="empty">Carregando painel.</p>
+    <section class="work-actions" aria-label="Acoes da curadoria">
+      <span id="publish-status" role="status"></span>
+      <div class="header-actions">
+        <button id="publish">Publicar catalogo</button>
+        <button id="save">Salvar escolhas</button>
       </div>
     </section>
 
@@ -42,6 +32,19 @@
         <p class="empty">Selecione um produto.</p>
       </section>
     </main>
+
+    <section class="dashboard" id="dashboard" aria-label="Painel operacional">
+      <div class="dashboard-head">
+        <div>
+          <p>Painel</p>
+          <h2>Resumo operacional e financeiro</h2>
+        </div>
+        <button id="refresh-dashboard">Atualizar painel</button>
+      </div>
+      <div class="dashboard-grid" id="dashboard-grid">
+        <p class="empty">Carregando painel.</p>
+      </div>
+    </section>
 
     <script src="/admin/photos.js" type="module"></script>
   </body>
