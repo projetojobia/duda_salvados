@@ -237,7 +237,11 @@ def build_catalog() -> dict[str, Any]:
 
 
 def parse_brl(value: str) -> float:
-    cleaned = str(value or "").replace("R$", "").replace(".", "").replace(",", ".")
+    if isinstance(value, (int, float)):
+        return float(value)
+    cleaned = str(value or "").replace("R$", "").strip()
+    if "," in cleaned:
+        cleaned = cleaned.replace(".", "").replace(",", ".")
     try:
         return float(cleaned)
     except (TypeError, ValueError):

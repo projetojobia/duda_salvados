@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T16:45:15",
+  "generatedAt": "2026-08-11T16:52:14",
   "source": {
     "spreadsheetId": "1kqLutUpgQwwnJgHmR7wrJ97zvQR8QZGRB6QyymM4GPU",
     "workbook": "Duda_Salvados_Hermes_GoogleSheets_v2_dashboard_executivo.xlsx"
@@ -80,8 +80,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "120",
-      "referencePrice": 360.0,
-      "discountPercent": 67,
+      "referencePrice": 191.86,
+      "discountPercent": 37,
       "quantity": "1",
       "images": [
         "/assets/products/ds001-relogio-sport-watch-analogico-digital-pulseira-metalica-prata-01.webp"
@@ -110,8 +110,8 @@
       "catalogStatus": "Não publicado",
       "location": "A2",
       "price": "150",
-      "referencePrice": 450.0,
-      "discountPercent": 67,
+      "referencePrice": 362.62,
+      "discountPercent": 59,
       "quantity": "1",
       "images": [],
       "media": [],
@@ -156,8 +156,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "85",
-      "referencePrice": 255.0,
-      "discountPercent": 67,
+      "referencePrice": 174.54,
+      "discountPercent": 51,
       "quantity": "1",
       "images": [
         "/assets/products/ds005-carrinho-gira-gira-plasma-car-com-rodas-led-01.webp",
@@ -191,8 +191,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "92",
-      "referencePrice": 276.0,
-      "discountPercent": 67,
+      "referencePrice": 139.45,
+      "discountPercent": 34,
       "quantity": "1",
       "images": [
         "/assets/products/ds006-caminhao-mack-relampago-mcqueen-com-carreta-rust-eze-carrinho-01.webp"
@@ -221,8 +221,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "35",
-      "referencePrice": 105.0,
-      "discountPercent": 67,
+      "referencePrice": 75.99,
+      "discountPercent": 54,
       "quantity": "1",
       "images": [
         "/assets/products/ds007-pantufa-vaquinha-pelucia-tamanho-36-37-01.webp",
@@ -316,8 +316,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "60",
-      "referencePrice": 180.0,
-      "discountPercent": 67,
+      "referencePrice": 107.13,
+      "discountPercent": 44,
       "quantity": "1",
       "images": [
         "/assets/products/ds010-chaleira-eletrica-220v-01.webp",
@@ -351,8 +351,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "250",
-      "referencePrice": 750.0,
-      "discountPercent": 67,
+      "referencePrice": 517.49,
+      "discountPercent": 52,
       "quantity": "1",
       "images": [
         "/assets/products/ds011-jogo-de-panelas-ferro-fundido-inducao-3-pecas-tampa-vidro-01.webp"
@@ -381,8 +381,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "50",
-      "referencePrice": 150.0,
-      "discountPercent": 67,
+      "referencePrice": 133.5,
+      "discountPercent": 63,
       "quantity": "2",
       "images": [
         "/assets/products/ds012-jogo-8-xicaras-ceramica-branca-150-ml-live-sub-01.webp",
@@ -416,8 +416,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "20",
-      "referencePrice": 60.0,
-      "discountPercent": 67,
+      "referencePrice": 44.03,
+      "discountPercent": 55,
       "quantity": "2",
       "images": [
         "/assets/products/ds013-es1155-01.webp",
@@ -451,8 +451,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "22",
-      "referencePrice": 66.0,
-      "discountPercent": 67,
+      "referencePrice": 32.99,
+      "discountPercent": 33,
       "quantity": "1",
       "images": [
         "/assets/products/ds014-cosmo-bubbles-60-ml-caixa-com-12-unidades-01.webp"
@@ -481,8 +481,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "55",
-      "referencePrice": 165.0,
-      "discountPercent": 67,
+      "referencePrice": 98.73,
+      "discountPercent": 44,
       "quantity": "1",
       "images": [
         "/assets/products/ds015-244329-jogo-de-formoes-olho-de-tigre-4-pecas-01.webp",
@@ -516,8 +516,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "80",
-      "referencePrice": 240.0,
-      "discountPercent": 67,
+      "referencePrice": 155.89,
+      "discountPercent": 49,
       "quantity": "2",
       "images": [
         "/assets/products/ds016-jogo-de-chaves-precision-screwdriver-6-em-1-01.webp",
@@ -556,8 +556,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "15",
-      "referencePrice": 45.0,
-      "discountPercent": 67,
+      "referencePrice": 33.45,
+      "discountPercent": 55,
       "quantity": "1",
       "images": [
         "/assets/products/ds017-capa-iphone-13-pro-com-logo-e-protecao-de-camera-01.webp"
@@ -586,8 +586,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "115",
-      "referencePrice": 345.0,
-      "discountPercent": 67,
+      "referencePrice": 217.78,
+      "discountPercent": 47,
       "quantity": "1",
       "images": [
         "/assets/products/ds018-patins-inline-ajustavel-35-38-preto-roxo-01.webp",
@@ -621,8 +621,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "25",
-      "referencePrice": 75.0,
-      "discountPercent": 67,
+      "referencePrice": 49.9,
+      "discountPercent": 50,
       "quantity": "1",
       "images": [
         "/assets/products/ds019-capacho-bem-vindo-preto-cinza-retangular-01.webp"
@@ -651,8 +651,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "45",
-      "referencePrice": 135.0,
-      "discountPercent": 67,
+      "referencePrice": 84.66,
+      "discountPercent": 47,
       "quantity": "1",
       "images": [
         "/assets/products/ds020-tenis-esportivo-rosa-36-37-01.webp"
@@ -681,8 +681,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "40",
-      "referencePrice": 120.0,
-      "discountPercent": 67,
+      "referencePrice": 93.07,
+      "discountPercent": 57,
       "quantity": "1",
       "images": [
         "/assets/products/ds021-escova-brush-hair-dryer-and-styler-220v-01.webp",
@@ -716,8 +716,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "35",
-      "referencePrice": 105.0,
-      "discountPercent": 67,
+      "referencePrice": 67.4,
+      "discountPercent": 48,
       "quantity": "1",
       "images": [
         "/assets/products/ds022-tenis-casual-branco-plataforma-37-38-01.webp"
@@ -746,8 +746,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "80",
-      "referencePrice": 240.0,
-      "discountPercent": 67,
+      "referencePrice": 166.58,
+      "discountPercent": 52,
       "quantity": "1",
       "images": [
         "/assets/products/ds023-creme-adesivo-para-protese-dental-68-g-sabor-original-pacote-4-unidades-01.webp"
@@ -776,8 +776,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "40",
-      "referencePrice": 120.0,
-      "discountPercent": 67,
+      "referencePrice": 74.9,
+      "discountPercent": 47,
       "quantity": "1",
       "images": [
         "/assets/products/ds024-alloy-car-series-city-alloy-car-6-pcs-01.webp",
@@ -811,8 +811,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "70",
-      "referencePrice": 210.0,
-      "discountPercent": 67,
+      "referencePrice": 44.9,
+      "discountPercent": 0,
       "quantity": "1",
       "images": [],
       "media": [],
@@ -834,8 +834,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "500",
-      "referencePrice": 1500.0,
-      "discountPercent": 67,
+      "referencePrice": 904.87,
+      "discountPercent": 45,
       "quantity": "1",
       "images": [
         "/assets/products/ds026-bomba-para-piscina-bpf-050-w01-cb-01.webp",
@@ -874,8 +874,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "35",
-      "referencePrice": 105.0,
-      "discountPercent": 67,
+      "referencePrice": 50.09,
+      "discountPercent": 30,
       "quantity": "1",
       "images": [
         "/assets/products/ds027-tabua-de-corte-e-servir-em-madeira-com-alca-01.webp"
@@ -904,8 +904,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "35",
-      "referencePrice": 105.0,
-      "discountPercent": 67,
+      "referencePrice": 49.34,
+      "discountPercent": 29,
       "quantity": "1",
       "images": [
         "/assets/products/ds028-banheira-de-bebe-15l-rosa-rsbb-01.webp",
@@ -939,8 +939,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "25",
-      "referencePrice": 75.0,
-      "discountPercent": 67,
+      "referencePrice": 39.95,
+      "discountPercent": 37,
       "quantity": "1",
       "images": [
         "/assets/products/ds029-babuche-crocs-bege-adulto-01.webp",
@@ -1009,8 +1009,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "60",
-      "referencePrice": 180.0,
-      "discountPercent": 67,
+      "referencePrice": 37.45,
+      "discountPercent": 0,
       "quantity": "1",
       "images": [
         "/assets/products/ds031-caixas-organizadoras-transparentes-kit-12-unidades-01.webp",
@@ -1044,8 +1044,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "40",
-      "referencePrice": 120.0,
-      "discountPercent": 67,
+      "referencePrice": 61.52,
+      "discountPercent": 35,
       "quantity": "1",
       "images": [
         "/assets/products/ds032-extensao-eletrica-15-m-01.webp",
@@ -1079,8 +1079,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "75",
-      "referencePrice": 225.0,
-      "discountPercent": 67,
+      "referencePrice": 78.57,
+      "discountPercent": 5,
       "quantity": "1",
       "images": [
         "/assets/products/ds033-suporte-articulado-para-tv-32-75-01.webp"
@@ -1109,8 +1109,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "25",
-      "referencePrice": 75.0,
-      "discountPercent": 67,
+      "referencePrice": 40.09,
+      "discountPercent": 38,
       "quantity": "1",
       "images": [
         "/assets/products/ds034-tira-manchas-calisul-01.webp"
@@ -1139,8 +1139,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "20",
-      "referencePrice": 60.0,
-      "discountPercent": 67,
+      "referencePrice": 21.27,
+      "discountPercent": 6,
       "quantity": "1",
       "images": [
         "/assets/products/ds035-kit-balsamo-labial-4-un-01.webp"
@@ -1169,8 +1169,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "15",
-      "referencePrice": 45.0,
-      "discountPercent": 67,
+      "referencePrice": 18.99,
+      "discountPercent": 21,
       "quantity": "1",
       "images": [
         "/assets/products/ds036-concreto-endurecedor-com-formol-01.webp"
@@ -1199,8 +1199,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "35",
-      "referencePrice": 105.0,
-      "discountPercent": 67,
+      "referencePrice": 36.45,
+      "discountPercent": 4,
       "quantity": "1",
       "images": [
         "/assets/products/ds037-retinol-colageno-complex-ha-01.webp"
@@ -1229,8 +1229,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "30",
-      "referencePrice": 90.0,
-      "discountPercent": 67,
+      "referencePrice": 30.45,
+      "discountPercent": 1,
       "quantity": "1",
       "images": [
         "/assets/products/ds038-removedor-de-ferrugem-250-ml-01.webp"
@@ -1259,8 +1259,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "70",
-      "referencePrice": 210.0,
-      "discountPercent": 67,
+      "referencePrice": 84.92,
+      "discountPercent": 18,
       "quantity": "1",
       "images": [
         "/assets/products/ds039-dimethylx-60-capsulas-01.webp"
@@ -1289,8 +1289,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "90",
-      "referencePrice": 270.0,
-      "discountPercent": 67,
+      "referencePrice": 102.49,
+      "discountPercent": 12,
       "quantity": "1",
       "images": [
         "/assets/products/ds040-cachos-naturais-500-g-01.webp"
@@ -1319,8 +1319,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "30",
-      "referencePrice": 90.0,
-      "discountPercent": 67,
+      "referencePrice": 29.99,
+      "discountPercent": 0,
       "quantity": "1",
       "images": [
         "/assets/products/ds041-colageno-hidrolisado-250-g-01.webp"
@@ -1349,8 +1349,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "35",
-      "referencePrice": 105.0,
-      "discountPercent": 67,
+      "referencePrice": 54.18,
+      "discountPercent": 35,
       "quantity": "1",
       "images": [
         "/assets/products/ds042-saches-friskies-filhotes-carne-15-un-01.webp"
@@ -1379,8 +1379,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "25",
-      "referencePrice": 75.0,
-      "discountPercent": 67,
+      "referencePrice": 56.0,
+      "discountPercent": 55,
       "quantity": "1",
       "images": [
         "/assets/products/ds043-livro-cafe-com-deus-pai-01.webp"
@@ -1409,8 +1409,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "10",
-      "referencePrice": 30.0,
-      "discountPercent": 67,
+      "referencePrice": 28.95,
+      "discountPercent": 65,
       "quantity": "1",
       "images": [
         "/assets/products/ds044-o-caibalion-01.webp"
@@ -1439,8 +1439,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "40",
-      "referencePrice": 120.0,
-      "discountPercent": 67,
+      "referencePrice": 64.9,
+      "discountPercent": 38,
       "quantity": "1",
       "images": [
         "/assets/products/ds045-jogo-de-cama-solteiro-4-pecas-01.webp",
@@ -1474,8 +1474,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "15",
-      "referencePrice": 45.0,
-      "discountPercent": 67,
+      "referencePrice": 29.95,
+      "discountPercent": 50,
       "quantity": "1",
       "images": [
         "/assets/products/ds046-palhetas-22-26-polegadas-01.webp",
@@ -1509,8 +1509,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "35",
-      "referencePrice": 105.0,
-      "discountPercent": 67,
+      "referencePrice": 42.4,
+      "discountPercent": 17,
       "quantity": "1",
       "images": [
         "/assets/products/ds047-refil-mop-chenille-pack-5-01.webp",
@@ -1574,8 +1574,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "70",
-      "referencePrice": 210.0,
-      "discountPercent": 67,
+      "referencePrice": 129.9,
+      "discountPercent": 46,
       "quantity": "1",
       "images": [
         "/assets/products/ds049-arame-farpado-aco-zincado-50-kgf-01.webp"
@@ -1604,8 +1604,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "170",
-      "referencePrice": 510.0,
-      "discountPercent": 67,
+      "referencePrice": 299.9,
+      "discountPercent": 43,
       "quantity": "1",
       "images": [
         "/assets/products/ds050-macaco-hidraulico-2t-jacare-01.webp"
@@ -1669,8 +1669,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "20",
-      "referencePrice": 60.0,
-      "discountPercent": 67,
+      "referencePrice": 35.95,
+      "discountPercent": 44,
       "quantity": "1",
       "images": [
         "/assets/products/ds052-meia-calca-infantil-120d-01.webp",
@@ -1704,8 +1704,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "20",
-      "referencePrice": 60.0,
-      "discountPercent": 67,
+      "referencePrice": 35.9,
+      "discountPercent": 44,
       "quantity": "1",
       "images": [
         "/assets/products/ds053-massa-de-modelar-ceramica-fria-500g-01.webp"
@@ -1734,8 +1734,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "15",
-      "referencePrice": 45.0,
-      "discountPercent": 67,
+      "referencePrice": 24.27,
+      "discountPercent": 38,
       "quantity": "1",
       "images": [
         "/assets/products/ds054-unhas-posticas-press-on-nails-01.webp"
@@ -1764,8 +1764,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "19",
-      "referencePrice": 57.0,
-      "discountPercent": 67,
+      "referencePrice": 40.47,
+      "discountPercent": 53,
       "quantity": "1",
       "images": [
         "/assets/products/ds055-verniz-acrilico-brilhante-100-ml-01.webp"
@@ -1794,8 +1794,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "20",
-      "referencePrice": 60.0,
-      "discountPercent": 67,
+      "referencePrice": 24.4,
+      "discountPercent": 18,
       "quantity": "1",
       "images": [
         "/assets/products/ds056-tinta-giotto-12-cores-15-ml-01.webp"
@@ -1824,8 +1824,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "20",
-      "referencePrice": 60.0,
-      "discountPercent": 67,
+      "referencePrice": 28.15,
+      "discountPercent": 29,
       "quantity": "1",
       "images": [
         "/assets/products/ds057-caneta-line-pen-6-cores-01.webp"
@@ -1854,8 +1854,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "25",
-      "referencePrice": 75.0,
-      "discountPercent": 67,
+      "referencePrice": 29.49,
+      "discountPercent": 15,
       "quantity": "2",
       "images": [
         "/assets/products/ds058-cilios-clusters-diy-8-16-mm-01.webp"
@@ -1884,8 +1884,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "150",
-      "referencePrice": 450.0,
-      "discountPercent": 67,
+      "referencePrice": 305.44,
+      "discountPercent": 51,
       "quantity": "1",
       "images": [
         "/assets/products/ds059-cadeira-escritorio-tela-mesh-preta-01.webp"
@@ -1914,8 +1914,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "95",
-      "referencePrice": 285.0,
-      "discountPercent": 67,
+      "referencePrice": 121.02,
+      "discountPercent": 22,
       "quantity": "8",
       "images": [
         "/assets/products/ds060-vestido-infantil-branco-festa-luxo-01.webp",
@@ -1949,8 +1949,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "17",
-      "referencePrice": 51.0,
-      "discountPercent": 67,
+      "referencePrice": 30.95,
+      "discountPercent": 45,
       "quantity": "1",
       "images": [
         "/assets/products/ds061-toalha-grande-infantil-rosa-ursinho-01.webp"
@@ -1979,8 +1979,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "35",
-      "referencePrice": 105.0,
-      "discountPercent": 67,
+      "referencePrice": 53.4,
+      "discountPercent": 34,
       "quantity": "1",
       "images": [
         "/assets/products/ds062-kit-3-porta-retratos-madeira-com-vidro-01.webp"
@@ -2009,8 +2009,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "20",
-      "referencePrice": 60.0,
-      "discountPercent": 67,
+      "referencePrice": 18.9,
+      "discountPercent": 0,
       "quantity": "1",
       "images": [
         "/assets/products/ds063-desodorante-cristal-stick-60-g-01.webp"
@@ -2039,8 +2039,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "29",
-      "referencePrice": 87.0,
-      "discountPercent": 67,
+      "referencePrice": 72.45,
+      "discountPercent": 60,
       "quantity": "1",
       "images": [
         "/assets/products/ds064-manta-para-sofa-bege-com-franjas-01.webp"
@@ -2069,8 +2069,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "99",
-      "referencePrice": 297.0,
-      "discountPercent": 67,
+      "referencePrice": 149.45,
+      "discountPercent": 34,
       "quantity": "1",
       "images": [
         "/assets/products/ds065-trio-cilindros-mdf-cru-p-m-g-01.webp"
@@ -2099,8 +2099,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "25",
-      "referencePrice": 75.0,
-      "discountPercent": 67,
+      "referencePrice": 32.4,
+      "discountPercent": 23,
       "quantity": "1",
       "images": [
         "/assets/products/ds066-buque-arranjo-de-flores-secas-decorativo-01.webp"
@@ -2129,8 +2129,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "19",
-      "referencePrice": 57.0,
-      "discountPercent": 67,
+      "referencePrice": 24.9,
+      "discountPercent": 24,
       "quantity": "1",
       "images": [
         "/assets/products/ds067-igora-royal-louro-claro-01.webp"
@@ -2159,8 +2159,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "12",
-      "referencePrice": 36.0,
-      "discountPercent": 67,
+      "referencePrice": 16.4,
+      "discountPercent": 27,
       "quantity": "1",
       "images": [
         "/assets/products/ds068-necessaire-feminina-preta-01.webp",
@@ -2194,8 +2194,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "17",
-      "referencePrice": 51.0,
-      "discountPercent": 67,
+      "referencePrice": 19.9,
+      "discountPercent": 15,
       "quantity": "1",
       "images": [
         "/assets/products/ds069-toalha-infantil-grande-verde-01.webp"
@@ -2224,8 +2224,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "8",
-      "referencePrice": 24.0,
-      "discountPercent": 67,
+      "referencePrice": 11.9,
+      "discountPercent": 33,
       "quantity": "1",
       "images": [
         "/assets/products/ds070-luz-led-por-do-sol-usb-01.webp"
@@ -2254,8 +2254,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "20",
-      "referencePrice": 60.0,
-      "discountPercent": 67,
+      "referencePrice": 24.9,
+      "discountPercent": 20,
       "quantity": "1",
       "images": [
         "/assets/products/ds071-fone-de-ouvido-bluetooth-sem-fio-01.webp"
@@ -2284,8 +2284,8 @@
       "catalogStatus": "Não publicado",
       "location": "A1",
       "price": "25",
-      "referencePrice": 75.0,
-      "discountPercent": 67,
+      "referencePrice": 24.9,
+      "discountPercent": 0,
       "quantity": "1",
       "images": [
         "/assets/products/ds072-kit-com-5-refis-para-mop-giratorio-01.webp"
@@ -2314,8 +2314,8 @@
       "catalogStatus": "Nao publicado",
       "location": "A1",
       "price": "5",
-      "referencePrice": 15.0,
-      "discountPercent": 67,
+      "referencePrice": 12.17,
+      "discountPercent": 59,
       "quantity": "1",
       "images": [
         "/assets/products/ds073-alcalex-massa-de-modelar-6-cores-65g-01.webp"

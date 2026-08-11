@@ -105,7 +105,15 @@ Base principal: menor referencia Shopee equivalente e confiavel, priorizando ite
 
 Somente anuncios nacionais podem alimentar `N/O/P`. Se a unica correspondencia visual forte for internacional, nao preencher preco como base final; registrar a imagem/modelo em observacoes e buscar equivalente nacional antes de sugerir `S/T`.
 
-Faixa permitida:
+Regra padrao atual:
+
+- Pesquisar no minimo: menor preco Mercado Livre equivalente, menor preco Shopee equivalente, preco medio Shopee e preco alto Shopee.
+- `N` deve representar o menor preco confiavel da Shopee quando houver equivalente forte; Mercado Livre entra como apoio/comparativo e fonte para media de referencia.
+- Preco final sugerido e definido (`S/T`) deve ser `N * 0,90`, ou seja, 10% abaixo do menor preco confiavel da Shopee.
+- A referencia de anuncio para o "De" deve ser uma media conservadora entre preco medio Shopee, preco alto Shopee e referencia media Mercado Livre quando disponivel, evitando referencias fora da realidade.
+- Se a condicao, teste, avaria, falta de acessorio ou baixa liquidez justificar desconto maior que 10%, registrar o motivo em `AD` e manter a decisao humana como prevalente.
+
+Faixa alternativa para excecoes justificadas:
 
 - Alta saida: `S = N * 0,90` (10% abaixo do menor preco Shopee)
 - Media saida: `S = N * 0,75` (25% abaixo do menor preco Shopee)
