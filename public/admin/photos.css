@@ -148,7 +148,7 @@ nav {
 
 .photos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 14px;
 }
 
@@ -182,8 +182,16 @@ nav {
 }
 
 .photo-actions .row {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
+}
+
+.photo-actions button {
+  width: 100%;
+  min-width: 0;
+  padding: 0 8px;
+  overflow-wrap: anywhere;
 }
 
 .filename {
