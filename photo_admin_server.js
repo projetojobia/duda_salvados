@@ -241,6 +241,13 @@ async function handleApi(req, res, url) {
 
   if (url.pathname === "/api/publish" && req.method === "POST") {
     const steps = [];
+    const skipGoogleSync = url.searchParams.get("skipGoogleSync") === "1";
+    const sync = skipGoogleSync
+      ? { ok: true, stdout: "Sincronizacao Google ignorada por parametro.", stderr: "" }
+      : await runCommand("npm.cmd", ["run", "sheets:sync"]);
+    steps.push({ name: "sheets:sync", ...sync });
+    const googleSynced = sync.ok && !skipGoogleSync;
+
     const build = await runCommand("npm.cmd", ["run", "catalog:build"]);
     steps.push({ name: "catalog:build", ...build });
     if (!build.ok) {
@@ -286,7 +293,16 @@ async function handleApi(req, res, url) {
       return;
     }
 
-    sendJson(res, { ok: true, published: true, message: "Catalogo publicado. O Cloudflare pode levar alguns segundos para atualizar.", steps });
+    sendJson(res, {
+      ok: true,
+      published: true,
+      googleSynced,
+      googleSyncWarning: sync.ok ? "" : "Google Sheets nao sincronizou; catalogo publicado a partir da planilha local.",
+      message: sync.ok
+        ? "Catalogo publicado. O Cloudflare pode levar alguns segundos para atualizar."
+        : "Catalogo publicado, mas a planilha Google nao sincronizou.",
+      steps,
+    });
     return;
   }
 

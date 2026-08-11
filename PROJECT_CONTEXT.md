@@ -72,7 +72,7 @@ O fluxo agora e local-first: a planilha `.xlsx` no PC e a fonte de trabalho diar
 ## Regras de Ouro
 
 - Consultar a planilha antes de responder sobre estoque, status, preco ou financeiro.
-- A primeira escrita deve acontecer na planilha local do PC. A planilha Google e atualizada apenas via sincronizacao da versao local quando a rodada estiver pronta.
+- A primeira escrita deve acontecer na planilha local do PC. A planilha Google e atualizada via `sync_local_workbook_to_google.py` quando a rodada estiver pronta ou pelo botao `Publicar catalogo` da curadoria.
 - Investimento do pallet fica na aba `Lote`; despesas recorrentes/operacionais ficam na aba `Custos Operacionais`.
 - Nunca inventar codigo; sempre localizar o primeiro `DSxxx` livre.
 - Antes de gravar, reler a linha.

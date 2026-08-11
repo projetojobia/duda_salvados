@@ -298,7 +298,7 @@ async function publishCatalog() {
   els.save.disabled = true;
   els.publishStatus.textContent = "Salvando...";
   await save();
-  els.publishStatus.textContent = "Publicando...";
+  els.publishStatus.textContent = "Sincronizando planilha e publicando...";
   const response = await fetch("/api/publish", { method: "POST" });
   const result = await response.json().catch(() => ({}));
   if (!response.ok || !result.ok) {
