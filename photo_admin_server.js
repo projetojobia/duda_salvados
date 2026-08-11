@@ -284,6 +284,7 @@ async function handleApi(req, res, url) {
       customTitle: productOverrides[product.code]?.title || "",
       category: product.category,
       price: productOverrides[product.code]?.price || product.price,
+      referencePrice: productOverrides[product.code]?.referencePrice || product.referencePrice || "",
       status: product.status,
       pricingSource: pricingSources[product.code] || "",
       pricingSourceUrl: extractFirstUrl(pricingSources[product.code]),

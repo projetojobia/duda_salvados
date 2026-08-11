@@ -41,11 +41,14 @@ function ensureOverride(code) {
 }
 
 function ensureProductOverride(code) {
-  if (!state.productOverrides[code]) state.productOverrides[code] = { title: "", sold: false, hidden: false, price: "" };
+  if (!state.productOverrides[code]) {
+    state.productOverrides[code] = { title: "", sold: false, hidden: false, price: "", referencePrice: "" };
+  }
   state.productOverrides[code].title ||= "";
   state.productOverrides[code].sold = Boolean(state.productOverrides[code].sold);
   state.productOverrides[code].hidden = Boolean(state.productOverrides[code].hidden);
   state.productOverrides[code].price ||= "";
+  state.productOverrides[code].referencePrice ||= "";
   return state.productOverrides[code];
 }
 
@@ -137,6 +140,14 @@ function updatePrice(code, price) {
   if (product) product.price = cleanPrice;
 }
 
+function updateReferencePrice(code, price) {
+  const cleanPrice = String(price || "").replace(",", ".").trim();
+  const override = ensureProductOverride(code);
+  override.referencePrice = cleanPrice;
+  const product = state.products.find((item) => item.code === code);
+  if (product) product.referencePrice = cleanPrice;
+}
+
 function updateSold(code, sold) {
   const override = ensureProductOverride(code);
   override.sold = sold;
@@ -195,8 +206,12 @@ function renderEditor() {
       <input id="title-edit" type="text" value="${escapeHtml(productOverride.title || "")}" placeholder="${escapeHtml(product.title)}" />
     </label>
     <label class="field">
-      <span>Preco final (R$)</span>
+      <span>Preco final / Por (R$)</span>
       <input id="price-edit" type="number" min="0" step="1" value="${escapeHtml(product.price)}" />
+    </label>
+    <label class="field">
+      <span>Preco referencia / De (R$)</span>
+      <input id="reference-price-edit" type="number" min="0" step="1" value="${escapeHtml(productOverride.referencePrice || product.referencePrice || "")}" />
     </label>
     <label class="sold-toggle">
       <input id="sold-edit" type="checkbox" ${productOverride.sold ? "checked" : ""} />
@@ -217,6 +232,9 @@ function renderEditor() {
   });
   tools.querySelector("#price-edit").addEventListener("input", (event) => {
     updatePrice(product.code, event.target.value);
+  });
+  tools.querySelector("#reference-price-edit").addEventListener("input", (event) => {
+    updateReferencePrice(product.code, event.target.value);
   });
   tools.querySelector("#sold-edit").addEventListener("change", (event) => {
     updateSold(product.code, event.target.checked);
@@ -301,6 +319,9 @@ async function save() {
     if (override.sold) cleanedOverride.sold = true;
     if (override.hidden) cleanedOverride.hidden = true;
     if (override.price !== "" && Number.isFinite(Number(override.price))) cleanedOverride.price = Math.round(Number(override.price));
+    if (override.referencePrice !== "" && Number.isFinite(Number(override.referencePrice))) {
+      cleanedOverride.referencePrice = Math.round(Number(override.referencePrice));
+    }
     if (Object.keys(cleanedOverride).length) productCleaned[code] = cleanedOverride;
   }
   const priceUpdates = Object.fromEntries(
