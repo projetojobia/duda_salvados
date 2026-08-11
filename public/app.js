@@ -27,6 +27,33 @@ function parsePrice(value) {
   return Number.isFinite(number) ? number : 0;
 }
 
+function discountLabel(product) {
+  const discount = Number(product.discountPercent || 0);
+  if (!Number.isFinite(discount) || discount < 5) return "";
+  return `${Math.round(discount)}% OFF`;
+}
+
+function renderPrice(product, priceEl) {
+  const priceValue = parsePrice(product.price);
+  const referenceValue = parsePrice(product.referencePrice);
+  priceEl.replaceChildren();
+
+  if (referenceValue > priceValue && priceValue > 0) {
+    const oldPrice = document.createElement("span");
+    oldPrice.className = "old-price";
+    oldPrice.textContent = `De ${money.format(referenceValue)}`;
+
+    const currentPrice = document.createElement("span");
+    currentPrice.className = "current-price";
+    currentPrice.textContent = `Por ${money.format(priceValue)}`;
+
+    priceEl.append(oldPrice, currentPrice);
+    return;
+  }
+
+  priceEl.textContent = priceValue ? money.format(priceValue) : product.price;
+}
+
 function stockLabel(value) {
   const quantity = Number(String(value || "1").replace(",", "."));
   if (!Number.isFinite(quantity) || quantity <= 1) return "Última unidade";
@@ -44,7 +71,7 @@ function productMatches(product) {
   const haystack = normalize(
     `${product.code} ${product.title} ${product.description} ${product.category} ${product.brand} ${product.model}`,
   );
-  const displayStatus = product.sold ? "Vendido" : product.status;
+  const displayStatus = product.sold ? "Vendido" : "Disponivel";
   return (
     (!state.search || haystack.includes(normalize(state.search))) &&
     (!state.category || product.category === state.category) &&
@@ -69,9 +96,9 @@ function renderProducts() {
     const photoWrap = node.querySelector(".photo-wrap");
     const fallback = node.querySelector(".photo-fallback");
     const title = node.querySelector("h2");
-    const priceValue = parsePrice(product.price);
     const media = product.media?.[0] || (product.images?.[0] ? { type: "image", url: product.images[0] } : null);
     const isSold = Boolean(product.sold);
+    const badge = discountLabel(product);
 
     if (isSold) {
       node.classList.add("sold");
@@ -101,10 +128,11 @@ function renderProducts() {
     }
 
     node.querySelector(".code").textContent = product.code;
-    node.querySelector(".status").textContent = isSold ? "Vendido" : product.status;
+    node.querySelector(".status").textContent = isSold ? "Vendido" : badge;
+    node.querySelector(".status").hidden = !isSold && !badge;
     title.textContent = product.title;
     node.querySelector(".desc").textContent = product.description;
-    node.querySelector(".price").textContent = priceValue ? money.format(priceValue) : product.price;
+    renderPrice(product, node.querySelector(".price"));
     node.querySelector(".condition").textContent = product.condition || "A conferir";
     node.querySelector(".quantity").textContent = stockLabel(product.quantity);
     const whatsapp = node.querySelector(".whatsapp");

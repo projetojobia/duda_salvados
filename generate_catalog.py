@@ -37,6 +37,9 @@ COLS = {
     "working": 9,
     "status": 10,
     "location": 11,
+    "price_low": 14,
+    "price_average": 15,
+    "price_high": 16,
     "price": 20,
     "catalog_status": 24,
     "ad_description": 25,
@@ -182,6 +185,11 @@ def build_catalog() -> dict[str, Any]:
         if not image_urls:
             missing_photos.append(code)
 
+        price = str(cell(row, "price")).strip()
+        reference_price = calculate_reference_price(cell(row, "price_average"), cell(row, "price_high"))
+        sale_price = parse_brl(price)
+        discount_percent = calculate_discount_percent(sale_price, reference_price)
+
         products.append(
             {
                 "code": code,
@@ -198,7 +206,9 @@ def build_catalog() -> dict[str, Any]:
                 "sold": is_sold,
                 "catalogStatus": str(cell(row, "catalog_status")).strip(),
                 "location": str(cell(row, "location")).strip(),
-                "price": str(cell(row, "price")).strip(),
+                "price": price,
+                "referencePrice": reference_price,
+                "discountPercent": discount_percent,
                 "quantity": str(cell(row, "quantity")).strip() or "1",
                 "images": image_urls,
                 "media": media_items,
@@ -227,11 +237,25 @@ def build_catalog() -> dict[str, Any]:
 
 
 def parse_brl(value: str) -> float:
-    cleaned = value.replace("R$", "").replace(".", "").replace(",", ".")
+    cleaned = str(value or "").replace("R$", "").replace(".", "").replace(",", ".")
     try:
         return float(cleaned)
-    except ValueError:
+    except (TypeError, ValueError):
         return 0.0
+
+
+def calculate_reference_price(price_average: Any, price_high: Any) -> float:
+    values = [parse_brl(value) for value in (price_average, price_high)]
+    valid_values = [value for value in values if value > 0]
+    if not valid_values:
+        return 0.0
+    return round(sum(valid_values) / len(valid_values), 2)
+
+
+def calculate_discount_percent(sale_price: float, reference_price: float) -> int:
+    if sale_price <= 0 or reference_price <= sale_price:
+        return 0
+    return round((1 - sale_price / reference_price) * 100)
 
 
 def parse_int(value: str) -> int:
