@@ -1,1 +1,47 @@
-{}
+{
+  "DS001": {
+    "primary": "DS001_relogio_sanda_3363_esportivo_masculino_01.jpg",
+    "order": [
+      "DS001_relogio_sanda_3363_esportivo_masculino_01.jpg",
+      "DS001_relogio_sanda_3363_esportivo_masculino_02.jpg"
+    ],
+    "hidden": [
+      "DS001_relogio_sanda_3363_esportivo_masculino_02.jpg"
+    ]
+  },
+  "DS005": {
+    "primary": "DS005_carrinho_plasma_car_rosa_02.jpg",
+    "order": [
+      "DS005_carrinho_plasma_car_rosa_02.jpg",
+      "DS005_carrinho_plasma_car_rosa_03.jpg",
+      "DS005_carrinho_plasma_car_rosa_01.jpg"
+    ],
+    "hidden": [
+      "DS005_carrinho_plasma_car_rosa_01.jpg"
+    ]
+  },
+  "DS007": {
+    "primary": "DS007_pantufa_vaquinha_infantil_01.jpg",
+    "order": [
+      "DS007_pantufa_vaquinha_infantil_01.jpg",
+      "DS007_pantufa_vaquinha_infantil_02.jpg"
+    ],
+    "hidden": []
+  },
+  "DS015": {
+    "primary": "",
+    "order": [
+      "DS015_jogo_de_formoes_mtx_02.jpg",
+      "DS015_jogo_de_formoes_mtx_01.jpg"
+    ],
+    "hidden": []
+  },
+  "DS024": {
+    "primary": "",
+    "order": [
+      "DS024_kit_6_carrinhos_die_cast_02.jpg",
+      "DS024_kit_6_carrinhos_die_cast_01.jpg"
+    ],
+    "hidden": []
+  }
+}

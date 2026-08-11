@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T13:32:54",
+  "generatedAt": "2026-08-11T13:46:08",
   "source": {
     "spreadsheetId": "1kqLutUpgQwwnJgHmR7wrJ97zvQR8QZGRB6QyymM4GPU",
     "workbook": "Duda_Salvados_Hermes_GoogleSheets_v2_dashboard_executivo.xlsx"
@@ -10,8 +10,7 @@
     "totalPotential": 4775.0,
     "missingPhotos": [
       "DS002",
-      "DS004",
-      "DS010"
+      "DS004"
     ],
     "skippedNonPublic": 1
   },
@@ -80,8 +79,7 @@
       "price": "120",
       "quantity": "1",
       "images": [
-        "/assets/products/ds001-sanda-3363-sport-watch-analogico-digital-pulseira-metalica-prata-01.webp",
-        "/assets/products/ds001-sanda-3363-sport-watch-analogico-digital-pulseira-metalica-prata-02.webp"
+        "/assets/products/ds001-sanda-3363-sport-watch-analogico-digital-pulseira-metalica-prata-01.webp"
       ],
       "whatsAppText": "Ola, tenho interesse no DS001 - SANDA 3363 Sport Watch analógico/digital pulseira metálica prata"
     },
@@ -141,8 +139,7 @@
       "quantity": "1",
       "images": [
         "/assets/products/ds005-carrinho-gira-gira-plasma-car-com-rodas-led-01.webp",
-        "/assets/products/ds005-carrinho-gira-gira-plasma-car-com-rodas-led-02.webp",
-        "/assets/products/ds005-carrinho-gira-gira-plasma-car-com-rodas-led-03.webp"
+        "/assets/products/ds005-carrinho-gira-gira-plasma-car-com-rodas-led-02.webp"
       ],
       "whatsAppText": "Ola, tenho interesse no DS005 - Carrinho gira-gira / plasma car com rodas LED"
     },
@@ -227,9 +224,7 @@
       "price": "35",
       "quantity": "1",
       "images": [
-        "/assets/products/ds009-poco-pelucia-01.webp",
-        "/assets/products/ds009-poco-pelucia-02.webp",
-        "/assets/products/ds009-poco-pelucia-03.webp"
+        "/assets/products/ds009-poco-pelucia-01.webp"
       ],
       "whatsAppText": "Ola, tenho interesse no DS009 - Poco pelúcia"
     },
@@ -249,7 +244,10 @@
       "location": "A1",
       "price": "60",
       "quantity": "1",
-      "images": [],
+      "images": [
+        "/assets/products/ds010-on-cl202-220-01.webp",
+        "/assets/products/ds010-on-cl202-220-02.webp"
+      ],
       "whatsAppText": "Ola, tenho interesse no DS010 - ON-CL202/220"
     },
     {
