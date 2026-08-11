@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T16:25:14",
+  "generatedAt": "2026-08-11T16:27:51",
   "source": {
     "spreadsheetId": "1kqLutUpgQwwnJgHmR7wrJ97zvQR8QZGRB6QyymM4GPU",
     "workbook": "Duda_Salvados_Hermes_GoogleSheets_v2_dashboard_executivo.xlsx"
@@ -2029,12 +2029,17 @@
       "price": "12",
       "quantity": "1",
       "images": [
-        "/assets/products/ds068-necessaire-feminina-preta-01.webp"
+        "/assets/products/ds068-necessaire-feminina-preta-01.webp",
+        "/assets/products/ds068-necessaire-feminina-preta-02.webp"
       ],
       "media": [
         {
           "type": "image",
           "url": "/assets/products/ds068-necessaire-feminina-preta-01.webp"
+        },
+        {
+          "type": "image",
+          "url": "/assets/products/ds068-necessaire-feminina-preta-02.webp"
         }
       ],
       "whatsAppText": "Ola, tenho interesse no DS068 - Nécessaire feminina preta"
