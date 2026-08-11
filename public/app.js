@@ -6,6 +6,7 @@ const state = {
 };
 
 const money = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
+const whatsappNumber = "5541984860237";
 
 const els = {
   summary: document.querySelector("#summary"),
@@ -141,7 +142,7 @@ function renderProducts() {
       whatsapp.removeAttribute("href");
       whatsapp.setAttribute("aria-disabled", "true");
     } else {
-      whatsapp.href = `https://wa.me/?text=${encodeURIComponent(product.whatsAppText)}`;
+      whatsapp.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(product.whatsAppText)}`;
     }
     els.products.append(node);
   }

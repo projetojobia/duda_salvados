@@ -186,8 +186,8 @@ def build_catalog() -> dict[str, Any]:
             missing_photos.append(code)
 
         price = str(cell(row, "price")).strip()
-        reference_price = calculate_reference_price(cell(row, "price_average"), cell(row, "price_high"))
         sale_price = parse_brl(price)
+        reference_price = calculate_reference_price(cell(row, "price_average"), cell(row, "price_high"), sale_price)
         discount_percent = calculate_discount_percent(sale_price, reference_price)
 
         products.append(
@@ -244,12 +244,15 @@ def parse_brl(value: str) -> float:
         return 0.0
 
 
-def calculate_reference_price(price_average: Any, price_high: Any) -> float:
+def calculate_reference_price(price_average: Any, price_high: Any, sale_price: float) -> float:
     values = [parse_brl(value) for value in (price_average, price_high)]
     valid_values = [value for value in values if value > 0]
     if not valid_values:
         return 0.0
-    return round(sum(valid_values) / len(valid_values), 2)
+    reference_price = sum(valid_values) / len(valid_values)
+    if sale_price > 0:
+        reference_price = min(reference_price, sale_price * 3)
+    return round(reference_price, 2)
 
 
 def calculate_discount_percent(sale_price: float, reference_price: float) -> int:
