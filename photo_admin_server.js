@@ -90,7 +90,8 @@ async function readManualMedia() {
 
 async function readJson(file, fallback) {
   if (!existsSync(file)) return fallback;
-  return JSON.parse(await readFile(file, "utf8"));
+  const text = await readFile(file, "utf8");
+  return JSON.parse(text.replace(/^\uFEFF/, ""));
 }
 
 function sendJson(res, value) {
