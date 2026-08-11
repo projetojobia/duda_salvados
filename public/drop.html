@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Drop - Duda Salvados</title>
+    <link rel="stylesheet" href="/drop.css" />
+  </head>
+  <body>
+    <main class="drop-shell">
+      <section class="drop-hero" id="drop-hero">
+        <p class="eyebrow">Drop relampago</p>
+        <h1 id="drop-title">Carregando drop</h1>
+        <p id="drop-subtitle">Aguarde um instante.</p>
+        <div class="countdown" id="countdown" hidden>
+          <span>Expira em</span>
+          <strong id="countdown-value">--:--</strong>
+        </div>
+      </section>
+
+      <section class="drop-grid" id="drop-products" aria-live="polite"></section>
+    </main>
+
+    <template id="drop-product-template">
+      <article class="drop-card">
+        <div class="photo-wrap">
+          <div class="photo-fallback">Sem foto</div>
+        </div>
+        <div class="drop-body">
+          <div class="line">
+            <span class="code"></span>
+            <span class="badge"></span>
+          </div>
+          <h2></h2>
+          <p class="desc"></p>
+          <div class="price"></div>
+          <a class="whatsapp" target="_blank" rel="noreferrer">Chamar no WhatsApp</a>
+        </div>
+      </article>
+    </template>
+
+    <script src="/drop.js" type="module"></script>
+  </body>
+</html>

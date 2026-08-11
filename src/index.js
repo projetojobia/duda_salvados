@@ -10,6 +10,11 @@ export default {
       });
     }
 
+    if (url.pathname === "/drop") {
+      url.pathname = "/drop.html";
+      return env.ASSETS.fetch(new Request(url, request));
+    }
+
     return env.ASSETS.fetch(request);
   }
 };

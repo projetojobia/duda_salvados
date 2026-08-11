@@ -1,0 +1,9 @@
+{
+  "active": true,
+  "title": "3 Achados do Dia",
+  "subtitle": "Produtos salvados liberados por tempo limitado. Unidade unica. Quem chamar primeiro tem prioridade.",
+  "expiresAt": "2026-08-11T23:59:00-03:00",
+  "expiredTitle": "Link expirado",
+  "expiredMessage": "Esse drop foi encerrado. Aguarde o proximo link no grupo.",
+  "productCodes": ["DS001", "DS005", "DS011"]
+}
