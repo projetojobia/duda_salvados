@@ -38,8 +38,9 @@ function ensureOverride(code) {
 }
 
 function ensureProductOverride(code) {
-  if (!state.productOverrides[code]) state.productOverrides[code] = { title: "" };
+  if (!state.productOverrides[code]) state.productOverrides[code] = { title: "", sold: false };
   state.productOverrides[code].title ||= "";
+  state.productOverrides[code].sold = Boolean(state.productOverrides[code].sold);
   return state.productOverrides[code];
 }
 
@@ -56,7 +57,8 @@ function renderList() {
   for (const product of visibleProducts()) {
     const button = document.createElement("button");
     button.className = `item ${state.selected === product.code ? "active" : ""}`;
-    button.innerHTML = `<strong>${escapeHtml(product.code)}</strong><span>${escapeHtml(product.customTitle || product.title)}</span><small>${product.sourcePhotos.length} arquivo(s)</small>`;
+    const sold = ensureProductOverride(product.code).sold;
+    button.innerHTML = `<strong>${escapeHtml(product.code)}</strong><span>${escapeHtml(product.customTitle || product.title)}</span><small>${sold ? "Vendido | " : ""}${product.sourcePhotos.length} arquivo(s)</small>`;
     button.addEventListener("click", () => {
       state.selected = product.code;
       render();
@@ -119,6 +121,12 @@ function updateTitle(code, title) {
   renderList();
 }
 
+function updateSold(code, sold) {
+  const override = ensureProductOverride(code);
+  override.sold = sold;
+  renderList();
+}
+
 async function uploadMedia(code, input) {
   const file = input.files?.[0];
   if (!file) return;
@@ -164,6 +172,10 @@ function renderEditor() {
       <span>Titulo do produto</span>
       <input id="title-edit" type="text" value="${escapeHtml(productOverride.title || "")}" placeholder="${escapeHtml(product.title)}" />
     </label>
+    <label class="sold-toggle">
+      <input id="sold-edit" type="checkbox" ${productOverride.sold ? "checked" : ""} />
+      <span>Produto vendido</span>
+    </label>
     <label class="upload">
       <span>Carregar foto ou video</span>
       <input id="media-upload" type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime,video/webm" />
@@ -172,6 +184,9 @@ function renderEditor() {
   els.editor.append(tools);
   tools.querySelector("#title-edit").addEventListener("input", (event) => {
     updateTitle(product.code, event.target.value);
+  });
+  tools.querySelector("#sold-edit").addEventListener("change", (event) => {
+    updateSold(product.code, event.target.checked);
   });
   tools.querySelector("#media-upload").addEventListener("change", (event) => {
     uploadMedia(product.code, event.target).catch((error) => alert(error.message));
@@ -229,7 +244,10 @@ async function save() {
   }
   const productCleaned = {};
   for (const [code, override] of Object.entries(state.productOverrides)) {
-    if (override.title) productCleaned[code] = { title: override.title };
+    const cleanedOverride = {};
+    if (override.title) cleanedOverride.title = override.title;
+    if (override.sold) cleanedOverride.sold = true;
+    if (Object.keys(cleanedOverride).length) productCleaned[code] = cleanedOverride;
   }
   const [response, productResponse] = await Promise.all([
     fetch("/api/overrides", {

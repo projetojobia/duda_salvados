@@ -154,7 +154,9 @@ def build_catalog() -> dict[str, Any]:
             continue
 
         default_title = str(cell(row, "model") or cell(row, "title")).strip()
-        title = str(product_overrides.get(code, {}).get("title") or default_title).strip()
+        product_override = product_overrides.get(code, {})
+        title = str(product_override.get("title") or default_title).strip()
+        is_sold = bool(product_override.get("sold"))
         slug = slugify(f"{code}-{title}")
         image_urls: list[str] = []
         media_items: list[dict[str, str]] = []
@@ -190,6 +192,7 @@ def build_catalog() -> dict[str, Any]:
                 "tested": str(cell(row, "tested")).strip(),
                 "working": str(cell(row, "working")).strip(),
                 "status": status,
+                "sold": is_sold,
                 "catalogStatus": str(cell(row, "catalog_status")).strip(),
                 "location": str(cell(row, "location")).strip(),
                 "price": str(cell(row, "price")).strip(),

@@ -38,10 +38,11 @@ function productMatches(product) {
   const haystack = normalize(
     `${product.code} ${product.title} ${product.description} ${product.category} ${product.brand} ${product.model}`,
   );
+  const displayStatus = product.sold ? "Vendido" : product.status;
   return (
     (!state.search || haystack.includes(normalize(state.search))) &&
     (!state.category || product.category === state.category) &&
-    (!state.status || product.status === state.status)
+    (!state.status || displayStatus === state.status)
   );
 }
 
@@ -64,6 +65,15 @@ function renderProducts() {
     const title = node.querySelector("h2");
     const priceValue = parsePrice(product.price);
     const media = product.media?.[0] || (product.images?.[0] ? { type: "image", url: product.images[0] } : null);
+    const isSold = Boolean(product.sold);
+
+    if (isSold) {
+      node.classList.add("sold");
+      const soldStamp = document.createElement("div");
+      soldStamp.className = "sold-stamp";
+      soldStamp.textContent = "Vendido";
+      photoWrap.append(soldStamp);
+    }
 
     if (media?.type === "video") {
       const video = document.createElement("video");
@@ -85,13 +95,20 @@ function renderProducts() {
     }
 
     node.querySelector(".code").textContent = product.code;
-    node.querySelector(".status").textContent = product.status;
+    node.querySelector(".status").textContent = isSold ? "Vendido" : product.status;
     title.textContent = product.title;
     node.querySelector(".desc").textContent = product.description;
     node.querySelector(".price").textContent = priceValue ? money.format(priceValue) : product.price;
     node.querySelector(".condition").textContent = product.condition || "A conferir";
     node.querySelector(".quantity").textContent = product.quantity;
-    node.querySelector(".whatsapp").href = `https://wa.me/?text=${encodeURIComponent(product.whatsAppText)}`;
+    const whatsapp = node.querySelector(".whatsapp");
+    if (isSold) {
+      whatsapp.textContent = "Produto vendido";
+      whatsapp.removeAttribute("href");
+      whatsapp.setAttribute("aria-disabled", "true");
+    } else {
+      whatsapp.href = `https://wa.me/?text=${encodeURIComponent(product.whatsAppText)}`;
+    }
     els.products.append(node);
   }
 }
