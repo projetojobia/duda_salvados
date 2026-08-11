@@ -187,6 +187,92 @@ async function writeProductPrices(priceUpdates) {
   }
 }
 
+async function writeProductOperations(productUpdates) {
+  const safeUpdates = {};
+  for (const [rawCode, rawUpdate] of Object.entries(productUpdates || {})) {
+    const code = sanitizeCode(rawCode);
+    if (!code || !rawUpdate || typeof rawUpdate !== "object") continue;
+    safeUpdates[code] = {
+      title: String(rawUpdate.title || "").trim(),
+      price: rawUpdate.price === undefined || rawUpdate.price === "" ? "" : Math.round(Number(rawUpdate.price)),
+      referencePrice:
+        rawUpdate.referencePrice === undefined || rawUpdate.referencePrice === ""
+          ? ""
+          : Math.round(Number(rawUpdate.referencePrice)),
+      sold: Boolean(rawUpdate.sold),
+      hidden: Boolean(rawUpdate.hidden),
+    };
+    if (!Number.isFinite(safeUpdates[code].price)) safeUpdates[code].price = "";
+    if (!Number.isFinite(safeUpdates[code].referencePrice)) safeUpdates[code].referencePrice = "";
+  }
+  if (!Object.keys(safeUpdates).length) return { ok: true, updated: [] };
+
+  const tempFile = path.join(root, `.product-updates-${Date.now()}-${randomUUID().slice(0, 8)}.json`);
+  await writeFile(tempFile, JSON.stringify(safeUpdates), "utf8");
+  const script = [
+    "import json, sys, openpyxl",
+    "from datetime import datetime",
+    "workbook_path=sys.argv[1]",
+    "updates=json.load(open(sys.argv[2], encoding='utf-8'))",
+    "wb=openpyxl.load_workbook(workbook_path)",
+    "ws=wb['Produtos']",
+    "now=datetime.now().strftime('%d/%m/%Y %H:%M:%S')",
+    "updated=[]",
+    "for row in range(2, 302):",
+    "    code=str(ws.cell(row, 1).value or '').strip()",
+    "    item=updates.get(code)",
+    "    if not item:",
+    "        continue",
+    "    if item.get('title'):",
+    "        ws.cell(row, 6).value=item['title']",
+    "    if item.get('price') != '':",
+    "        ws.cell(row, 20).value=float(item['price'])",
+    "    if item.get('referencePrice') != '':",
+    "        ws.cell(row, 15).value=float(item['referencePrice'])",
+    "        ws.cell(row, 16).value=float(item['referencePrice'])",
+    "    if item.get('sold'):",
+    "        ws.cell(row, 10).value='Vendido'",
+    "        ws.cell(row, 24).value='Vendido'",
+    "        if not ws.cell(row, 26).value:",
+    "            ws.cell(row, 26).value=now",
+    "    elif item.get('hidden'):",
+    "        ws.cell(row, 24).value='Oculto'",
+    "    ws.cell(row, 31).value=now",
+    "    updated.append(code)",
+    "wb.save(workbook_path)",
+    "print(json.dumps({'updated': updated}, ensure_ascii=False))",
+  ].join("\n");
+
+  try {
+    const { stdout } = await execFileAsync("python", ["-c", script, workbookPath, tempFile], {
+      cwd: root,
+      windowsHide: true,
+      maxBuffer: 1024 * 1024 * 4,
+    });
+    const result = JSON.parse(stdout || "{}");
+    return { ok: true, updated: result.updated || [], workbookUpdated: true };
+  } catch (error) {
+    const details = `${error.message || ""}\n${error.stderr || ""}`;
+    if (details.includes("Permission denied")) {
+      return {
+        ok: true,
+        updated: [],
+        workbookUpdated: false,
+        warning: "Planilha local aberta ou travada; alteracoes serao aplicadas ao Google Sheets na publicacao.",
+      };
+    }
+    return {
+      ok: false,
+      message: error.message || String(error),
+      stdout: error.stdout || "",
+      stderr: error.stderr || "",
+    };
+  } finally {
+    const { rm } = await import("node:fs/promises");
+    await rm(tempFile, { force: true }).catch(() => {});
+  }
+}
+
 function sendJson(res, value) {
   res.writeHead(200, { "content-type": mime[".json"], "cache-control": "no-store" });
   res.end(JSON.stringify(value, null, 2));
@@ -314,7 +400,13 @@ async function handleApi(req, res, url) {
   if (url.pathname === "/api/product-overrides" && req.method === "POST") {
     const body = JSON.parse(await readBody(req));
     await writeFile(productOverridesPath, `${JSON.stringify(body, null, 2)}\n`, "utf8");
-    sendJson(res, { ok: true });
+    const result = await writeProductOperations(body);
+    if (!result.ok) {
+      res.writeHead(500, { "content-type": mime[".json"], "cache-control": "no-store" });
+      res.end(JSON.stringify(result, null, 2));
+      return;
+    }
+    sendJson(res, result);
     return;
   }
 

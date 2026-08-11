@@ -1,19 +1,20 @@
 {
-  "generatedAt": "2026-08-11T18:15:40",
+  "generatedAt": "2026-08-11T18:19:15",
   "source": {
     "spreadsheetId": "1kqLutUpgQwwnJgHmR7wrJ97zvQR8QZGRB6QyymM4GPU",
     "workbook": "Duda_Salvados_Hermes_GoogleSheets_v2_dashboard_executivo.xlsx"
   },
   "summary": {
-    "products": 72,
-    "categories": 46,
-    "totalPotential": 4499.0,
+    "products": 73,
+    "categories": 47,
+    "totalPotential": 4549.0,
     "missingPhotos": [
       "DS002",
+      "DS003",
       "DS004",
       "DS025"
     ],
-    "skippedNonPublic": 1
+    "skippedNonPublic": 0
   },
   "categories": [
     "Acessórios / organização",
@@ -51,6 +52,7 @@
     "Ferramentas automotivas",
     "Ferramentas e construção",
     "Ferramentas e melhorias para casa",
+    "Infantil / Higiene",
     "Livros e esoterismo",
     "Livros e religião",
     "Moda infantil",
@@ -116,6 +118,29 @@
       "images": [],
       "media": [],
       "whatsAppText": "Ola, tenho interesse no DS002 - Pre-rinse / Pré-lavagem Mola Spray Preto Fosco"
+    },
+    {
+      "code": "DS003",
+      "slug": "ds003-vaso-sanitario-infantil-treinamento-branco-rosa",
+      "title": "Vaso Sanitário Infantil Treinamento Branco/Rosa",
+      "description": "Vaso sanitário infantil/troninho branco e rosa, com tampa, tanque decorativo e botão de descarga simulado. Produto novo, sem marca visível e não testado.",
+      "category": "Infantil / Higiene",
+      "brand": "Não identificada (sem marca visível)",
+      "model": "Vaso Sanitário Infantil Treinamento Branco/Rosa",
+      "condition": "Nova",
+      "tested": "Não",
+      "working": "Não verificado",
+      "status": "Vendido",
+      "sold": true,
+      "catalogStatus": "Não publicado",
+      "location": "A3",
+      "price": "50",
+      "referencePrice": 100,
+      "discountPercent": 50,
+      "quantity": "1",
+      "images": [],
+      "media": [],
+      "whatsAppText": "Ola, tenho interesse no DS003 - Vaso Sanitário Infantil Treinamento Branco/Rosa"
     },
     {
       "code": "DS004",

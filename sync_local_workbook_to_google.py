@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -11,6 +12,7 @@ from openpyxl.utils import get_column_letter
 
 
 WORKBOOK_PATH = Path(r"C:\Users\User\duda\Duda_Salvados_Hermes_GoogleSheets_v2_dashboard_executivo.xlsx")
+PRODUCT_OVERRIDES_PATH = Path(r"C:\Users\User\duda\catalog_product_overrides.json")
 SPREADSHEET_ID = "1kqLutUpgQwwnJgHmR7wrJ97zvQR8QZGRB6QyymM4GPU"
 EXPECTED_TITLE = "Duda Salvados - Base Oficial Restaurada"
 GOOGLE_SCRIPTS = Path(
@@ -70,6 +72,48 @@ def sheet_bounds(ws) -> tuple[int, int]:
     return last_row, last_col
 
 
+def load_product_overrides() -> dict[str, dict[str, Any]]:
+    if not PRODUCT_OVERRIDES_PATH.exists():
+        return {}
+    return json.loads(PRODUCT_OVERRIDES_PATH.read_text(encoding="utf-8-sig"))
+
+
+def apply_product_overrides_to_raw_values(sheet_name: str, raw_values: list[list[Any]]) -> None:
+    if sheet_name != "Produtos" or len(raw_values) < 2:
+        return
+    overrides = load_product_overrides()
+    if not overrides:
+        return
+
+    now = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    for row in raw_values[1:]:
+        if not row:
+            continue
+        code = str(row[0] or "").strip()
+        override = overrides.get(code)
+        if not override:
+            continue
+
+        while len(row) < 32:
+            row.append("")
+
+        if override.get("title"):
+            row[5] = override["title"]  # Modelo
+        if override.get("price") not in (None, ""):
+            row[19] = override["price"]  # Preco definido
+        if override.get("referencePrice") not in (None, ""):
+            row[14] = override["referencePrice"]  # Preco medio IA
+            row[15] = override["referencePrice"]  # Preco alto IA
+        if override.get("sold"):
+            row[9] = "Vendido"  # Status interno
+            row[23] = "Vendido"  # Status catalogo
+            if not row[25]:
+                row[25] = now  # Data venda
+        elif override.get("hidden"):
+            row[23] = "Oculto"  # Status catalogo
+        row[30] = now  # Ultima atualizacao
+
+
 def build_payload(workbook_path: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     wb = load_workbook(workbook_path, data_only=False)
     raw_data = []
@@ -80,6 +124,7 @@ def build_payload(workbook_path: Path) -> tuple[list[dict[str, Any]], list[dict[
             ["" if isinstance(value, str) and value.startswith("=") else value for value in row]
             for row in values
         ]
+        apply_product_overrides_to_raw_values(ws.title, raw_values)
         last_row, last_col = sheet_bounds(ws)
         width = max(last_col, max((len(row) for row in values), default=1))
         height = max(last_row, len(values))
