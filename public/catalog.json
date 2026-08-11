@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T17:43:49",
+  "generatedAt": "2026-08-11T17:46:04",
   "source": {
     "spreadsheetId": "1kqLutUpgQwwnJgHmR7wrJ97zvQR8QZGRB6QyymM4GPU",
     "workbook": "Duda_Salvados_Hermes_GoogleSheets_v2_dashboard_executivo.xlsx"
@@ -7,7 +7,7 @@
   "summary": {
     "products": 72,
     "categories": 46,
-    "totalPotential": 4493.0,
+    "totalPotential": 4543.0,
     "missingPhotos": [
       "DS002",
       "DS004",
@@ -79,9 +79,9 @@
       "sold": false,
       "catalogStatus": "Não publicado",
       "location": "A1",
-      "price": "70",
-      "referencePrice": 102,
-      "discountPercent": 31,
+      "price": "120",
+      "referencePrice": 230.0,
+      "discountPercent": 48,
       "quantity": "1",
       "images": [
         "/assets/products/ds001-relogio-sport-watch-analogico-digital-pulseira-metalica-prata-01.webp"
