@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T16:52:14",
+  "generatedAt": "2026-08-11T17:08:00",
   "source": {
     "spreadsheetId": "1kqLutUpgQwwnJgHmR7wrJ97zvQR8QZGRB6QyymM4GPU",
     "workbook": "Duda_Salvados_Hermes_GoogleSheets_v2_dashboard_executivo.xlsx"
@@ -7,7 +7,7 @@
   "summary": {
     "products": 72,
     "categories": 46,
-    "totalPotential": 4780.0,
+    "totalPotential": 4493.0,
     "missingPhotos": [
       "DS002",
       "DS004",
@@ -79,9 +79,9 @@
       "sold": false,
       "catalogStatus": "Não publicado",
       "location": "A1",
-      "price": "120",
-      "referencePrice": 191.86,
-      "discountPercent": 37,
+      "price": "70",
+      "referencePrice": 101.92,
+      "discountPercent": 31,
       "quantity": "1",
       "images": [
         "/assets/products/ds001-relogio-sport-watch-analogico-digital-pulseira-metalica-prata-01.webp"
@@ -109,9 +109,9 @@
       "sold": false,
       "catalogStatus": "Não publicado",
       "location": "A2",
-      "price": "150",
-      "referencePrice": 362.62,
-      "discountPercent": 59,
+      "price": "94",
+      "referencePrice": 148.22,
+      "discountPercent": 37,
       "quantity": "1",
       "images": [],
       "media": [],
@@ -350,9 +350,9 @@
       "sold": false,
       "catalogStatus": "Nao publicado",
       "location": "A1",
-      "price": "250",
-      "referencePrice": 517.49,
-      "discountPercent": 52,
+      "price": "320",
+      "referencePrice": 407.1,
+      "discountPercent": 21,
       "quantity": "1",
       "images": [
         "/assets/products/ds011-jogo-de-panelas-ferro-fundido-inducao-3-pecas-tampa-vidro-01.webp"
@@ -810,9 +810,9 @@
       "sold": false,
       "catalogStatus": "Nao publicado",
       "location": "A1",
-      "price": "70",
-      "referencePrice": 44.9,
-      "discountPercent": 0,
+      "price": "43",
+      "referencePrice": 106.25,
+      "discountPercent": 60,
       "quantity": "1",
       "images": [],
       "media": [],
@@ -833,9 +833,9 @@
       "sold": false,
       "catalogStatus": "Nao publicado",
       "location": "A1",
-      "price": "500",
-      "referencePrice": 904.87,
-      "discountPercent": 45,
+      "price": "470",
+      "referencePrice": 1037.33,
+      "discountPercent": 55,
       "quantity": "1",
       "images": [
         "/assets/products/ds026-bomba-para-piscina-bpf-050-w01-cb-01.webp",
@@ -1008,9 +1008,9 @@
       "sold": false,
       "catalogStatus": "Nao publicado",
       "location": "A1",
-      "price": "60",
-      "referencePrice": 37.45,
-      "discountPercent": 0,
+      "price": "36",
+      "referencePrice": 108.0,
+      "discountPercent": 67,
       "quantity": "1",
       "images": [
         "/assets/products/ds031-caixas-organizadoras-transparentes-kit-12-unidades-01.webp",
@@ -1078,9 +1078,9 @@
       "sold": false,
       "catalogStatus": "Não publicado",
       "location": "A1",
-      "price": "75",
-      "referencePrice": 78.57,
-      "discountPercent": 5,
+      "price": "102",
+      "referencePrice": 196.88,
+      "discountPercent": 48,
       "quantity": "1",
       "images": [
         "/assets/products/ds033-suporte-articulado-para-tv-32-75-01.webp"
@@ -1288,9 +1288,9 @@
       "sold": false,
       "catalogStatus": "Não publicado",
       "location": "A1",
-      "price": "90",
-      "referencePrice": 102.49,
-      "discountPercent": 12,
+      "price": "69",
+      "referencePrice": 88.28,
+      "discountPercent": 22,
       "quantity": "1",
       "images": [
         "/assets/products/ds040-cachos-naturais-500-g-01.webp"
@@ -1913,9 +1913,9 @@
       "sold": false,
       "catalogStatus": "Não publicado",
       "location": "A1",
-      "price": "95",
-      "referencePrice": 121.02,
-      "discountPercent": 22,
+      "price": "76",
+      "referencePrice": 112.2,
+      "discountPercent": 32,
       "quantity": "8",
       "images": [
         "/assets/products/ds060-vestido-infantil-branco-festa-luxo-01.webp",
@@ -2068,9 +2068,9 @@
       "sold": false,
       "catalogStatus": "Não publicado",
       "location": "A1",
-      "price": "99",
-      "referencePrice": 149.45,
-      "discountPercent": 34,
+      "price": "75",
+      "referencePrice": 111.69,
+      "discountPercent": 33,
       "quantity": "1",
       "images": [
         "/assets/products/ds065-trio-cilindros-mdf-cru-p-m-g-01.webp"
