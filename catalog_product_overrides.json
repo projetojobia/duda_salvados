@@ -5,31 +5,42 @@
     "referencePrice": 230
   },
   "DS009": {
-    "title": "Bicho de pelúcia"
+    "title": "Bicho de pelúcia",
+    "price": 20,
+    "referencePrice": 45
   },
   "DS010": {
-    "title": "Chaleira Elétrica - 220v"
+    "title": "Chaleira Elétrica - 220v",
+    "price": 50,
+    "referencePrice": 129
   },
   "DS012": {
-    "title": "Jogo 8 Xicaras ceramica branca 150 ml Live Sub"
+    "title": "Jogo 8 Xicaras ceramica branca 150 ml Live Sub",
+    "price": 40,
+    "referencePrice": 65
   },
   "DS016": {
     "title": "Jogo de chaves Precision Screwdriver 6 em 1"
   },
   "DS021": {
-    "title": "Escova Brush Hair Dryer and Styler 220V"
+    "title": "Escova Brush Hair Dryer and Styler 220V",
+    "price": 65,
+    "referencePrice": 119
   },
   "DS026": {
-    "title": "Bomba para Piscina BPF-050 W01 CB"
+    "title": "Bomba para Piscina BPF-050 W01 CB",
+    "price": 550
   },
   "DS034": {
     "title": "Tira manchas Calisul"
   },
   "DS043": {
-    "title": "Livro Café com Deus Pai"
+    "title": "Livro Café com Deus Pai",
+    "price": 20
   },
   "DS070": {
-    "sold": true
+    "sold": true,
+    "referencePrice": 19
   },
   "DS004": {
     "title": "Mini Câmera digital portátil retrô De chaveiro",
@@ -41,5 +52,158 @@
   },
   "DS006": {
     "price": 75
+  },
+  "DS007": {
+    "referencePrice": 55
+  },
+  "DS008": {
+    "referencePrice": 69
+  },
+  "DS011": {
+    "price": 200,
+    "referencePrice": 290
+  },
+  "DS013": {
+    "price": 25,
+    "referencePrice": 39
+  },
+  "DS015": {
+    "price": 45,
+    "referencePrice": 79
+  },
+  "DS017": {
+    "price": 19,
+    "referencePrice": 38
+  },
+  "DS018": {
+    "price": 120,
+    "referencePrice": 180
+  },
+  "DS019": {
+    "price": 15,
+    "referencePrice": 29
+  },
+  "DS023": {
+    "price": 69,
+    "referencePrice": 119
+  },
+  "DS024": {
+    "price": 45
+  },
+  "DS025": {
+    "price": 75,
+    "referencePrice": 129
+  },
+  "DS027": {
+    "price": 29,
+    "referencePrice": 45
+  },
+  "DS029": {
+    "price": 35,
+    "referencePrice": 55
+  },
+  "DS030": {
+    "price": 12,
+    "referencePrice": 19
+  },
+  "DS031": {
+    "price": 30,
+    "referencePrice": 49
+  },
+  "DS032": {
+    "referencePrice": 69
+  },
+  "DS033": {
+    "price": 100
+  },
+  "DS035": {
+    "price": 19,
+    "referencePrice": 29
+  },
+  "DS037": {
+    "price": 25,
+    "referencePrice": 39
+  },
+  "DS038": {
+    "price": 29,
+    "referencePrice": 39
+  },
+  "DS039": {
+    "price": 50
+  },
+  "DS040": {
+    "price": 55
+  },
+  "DS041": {
+    "price": 20
+  },
+  "DS042": {
+    "price": 30
+  },
+  "DS049": {
+    "price": 60,
+    "referencePrice": 90
+  },
+  "DS051": {
+    "price": 10,
+    "referencePrice": 22
+  },
+  "DS056": {
+    "price": 20,
+    "referencePrice": 38
+  },
+  "DS057": {
+    "price": 15
+  },
+  "DS058": {
+    "price": 15
+  },
+  "DS059": {
+    "price": 120,
+    "referencePrice": 230
+  },
+  "DS060": {
+    "price": 90,
+    "referencePrice": 149
+  },
+  "DS061": {
+    "referencePrice": 29
+  },
+  "DS062": {
+    "price": 29,
+    "referencePrice": 39
+  },
+  "DS063": {
+    "price": 10
+  },
+  "DS064": {
+    "price": 25
+  },
+  "DS065": {
+    "price": 90,
+    "referencePrice": 189
+  },
+  "DS066": {
+    "referencePrice": 45
+  },
+  "DS067": {
+    "price": 15,
+    "referencePrice": 29
+  },
+  "DS068": {
+    "referencePrice": 20
+  },
+  "DS069": {
+    "referencePrice": 35
+  },
+  "DS071": {
+    "referencePrice": 35
+  },
+  "DS072": {
+    "referencePrice": 49
+  },
+  "DS073": {
+    "price": 2,
+    "referencePrice": 4
   }
 }
