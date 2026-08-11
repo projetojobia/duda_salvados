@@ -104,7 +104,10 @@ function sendJson(res, value) {
 
 async function runCommand(command, args) {
   try {
-    const { stdout, stderr } = await execFileAsync(command, args, {
+    const isCmd = command.toLowerCase().endsWith(".cmd") || command.toLowerCase().endsWith(".bat");
+    const finalCommand = isCmd ? process.env.ComSpec || "cmd.exe" : command;
+    const finalArgs = isCmd ? ["/d", "/s", "/c", command, ...args] : args;
+    const { stdout, stderr } = await execFileAsync(finalCommand, finalArgs, {
       cwd: root,
       windowsHide: true,
       maxBuffer: 1024 * 1024 * 8,
@@ -260,7 +263,7 @@ async function handleApi(req, res, url) {
       "add",
       "catalog_photo_overrides.json",
       "catalog_product_overrides.json",
-      "catalog_manual_media",
+      ...(existsSync(manualMediaDir) ? ["catalog_manual_media"] : []),
       "public/catalog.json",
       "public/assets/products",
     ]);

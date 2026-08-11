@@ -303,7 +303,9 @@ async function publishCatalog() {
   const result = await response.json().catch(() => ({}));
   if (!response.ok || !result.ok) {
     const detail = result.step ? ` Etapa: ${result.step}.` : "";
-    throw new Error(`${result.message || "Falha ao publicar."}${detail}`);
+    const failedStep = result.steps?.find((step) => step.name === result.step || !step.ok);
+    const technical = failedStep?.message || failedStep?.stderr || failedStep?.stdout || "";
+    throw new Error(`${result.message || "Falha ao publicar."}${detail}${technical ? ` Motivo: ${technical}` : ""}`);
   }
   els.publishStatus.textContent = result.message || "Publicado.";
   setTimeout(() => {
