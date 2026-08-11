@@ -128,6 +128,40 @@ async function readPricingSources() {
   }
 }
 
+async function readDashboard() {
+  if (!existsSync(workbookPath)) return { finance: [], operation: [], charts: {} };
+  const script = [
+    "import json, openpyxl, sys",
+    "wb=openpyxl.load_workbook(sys.argv[1], data_only=True)",
+    "ws=wb['Painel']",
+    "def value(cell):",
+    "    v=ws[cell].value",
+    "    return v if v is not None else ''",
+    "finance=[]",
+    "operation=[]",
+    "for row in range(4, 18):",
+    "    if value(f'A{row}') != '':",
+    "        finance.append({'label': value(f'A{row}'), 'value': value(f'B{row}')})",
+    "    if value(f'D{row}') != '':",
+    "        operation.append({'label': value(f'D{row}'), 'value': value(f'E{row}')})",
+    "charts={",
+    "    'costCoverage': {'recovered': value('B5'), 'remaining': value('B6'), 'percent': value('B7')},",
+    "    'profit': {'investment': value('B16'), 'potential': value('B9'), 'projectedResult': value('B10')},",
+    "}",
+    "print(json.dumps({'finance': finance, 'operation': operation, 'charts': charts}, ensure_ascii=False))",
+  ].join("\n");
+  try {
+    const { stdout } = await execFileAsync("python", ["-c", script, workbookPath], {
+      cwd: root,
+      windowsHide: true,
+      maxBuffer: 1024 * 1024 * 4,
+    });
+    return JSON.parse(stdout || "{}");
+  } catch {
+    return { finance: [], operation: [], charts: {} };
+  }
+}
+
 async function writeProductPrices(priceUpdates) {
   const safeUpdates = {};
   for (const [rawCode, rawPrice] of Object.entries(priceUpdates || {})) {
@@ -358,6 +392,11 @@ function parseMultipart(buffer, contentType) {
 }
 
 async function handleApi(req, res, url) {
+  if (url.pathname === "/api/dashboard") {
+    sendJson(res, await readDashboard());
+    return;
+  }
+
   if (url.pathname === "/api/photos") {
     const [catalog, reportRows, manualRows, overrides, productOverrides, pricingSources] = await Promise.all([
       readJson(path.join(publicDir, "catalog.json"), { products: [] }),

@@ -6,6 +6,7 @@ const state = {
   selected: "",
   search: "",
   missingOnly: false,
+  dashboard: null,
 };
 
 const els = {
@@ -16,7 +17,12 @@ const els = {
   save: document.querySelector("#save"),
   publish: document.querySelector("#publish"),
   publishStatus: document.querySelector("#publish-status"),
+  dashboardGrid: document.querySelector("#dashboard-grid"),
+  refreshDashboard: document.querySelector("#refresh-dashboard"),
 };
+
+const brl = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+const number = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 });
 
 const normalize = (value) =>
   String(value || "")
@@ -30,6 +36,88 @@ const escapeHtml = (value) =>
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
+
+function formatMetric(label, value) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) return escapeHtml(value);
+  const lower = normalize(label);
+  if (lower.includes("%") || lower.includes("retorno") || lower.includes("margem")) {
+    return `${number.format(numeric * 100)}%`;
+  }
+  if (
+    lower.includes("investimento") ||
+    lower.includes("receita") ||
+    lower.includes("saldo") ||
+    lower.includes("valor") ||
+    lower.includes("projecao") ||
+    lower.includes("meta") ||
+    lower.includes("despesas")
+  ) {
+    return brl.format(numeric);
+  }
+  return number.format(numeric);
+}
+
+function renderDashboard() {
+  const dashboard = state.dashboard;
+  if (!dashboard) return;
+  const finance = dashboard.finance || [];
+  const operation = dashboard.operation || [];
+  const coverage = dashboard.charts?.costCoverage || {};
+  const profit = dashboard.charts?.profit || {};
+  const recoveredPercent = Math.max(0, Math.min(100, Number(coverage.percent || 0) * 100));
+  const bars = [
+    ["Investimento", Number(profit.investment || 0)],
+    ["Potencial", Number(profit.potential || 0)],
+    ["Resultado", Number(profit.projectedResult || 0)],
+  ];
+  const maxBar = Math.max(...bars.map(([, value]) => Math.abs(value)), 1);
+
+  els.dashboardGrid.innerHTML = `
+    <article class="dashboard-chart">
+      <h3>Cobertura do custo</h3>
+      <div class="donut" style="--value: ${recoveredPercent}">
+        <span>${number.format(recoveredPercent)}%</span>
+      </div>
+      <p>Recuperado: ${formatMetric("Receita", coverage.recovered || 0)} | Falta: ${formatMetric("Saldo", coverage.remaining || 0)}</p>
+    </article>
+    <article class="dashboard-chart">
+      <h3>Resultado do lote</h3>
+      <div class="bars">
+        ${bars
+          .map(
+            ([label, value]) => `
+              <div class="bar-row">
+                <span>${escapeHtml(label)}</span>
+                <div><i style="width: ${Math.max(4, (Math.abs(value) / maxBar) * 100)}%"></i></div>
+                <strong>${brl.format(value)}</strong>
+              </div>
+            `,
+          )
+          .join("")}
+      </div>
+    </article>
+    <section class="metric-group">
+      <h3>Financeiro</h3>
+      <div class="metrics">
+        ${finance.map((item) => `<div><span>${escapeHtml(item.label)}</span><strong>${formatMetric(item.label, item.value)}</strong></div>`).join("")}
+      </div>
+    </section>
+    <section class="metric-group">
+      <h3>Operacao</h3>
+      <div class="metrics">
+        ${operation.map((item) => `<div><span>${escapeHtml(item.label)}</span><strong>${formatMetric(item.label, item.value)}</strong></div>`).join("")}
+      </div>
+    </section>
+  `;
+}
+
+async function loadDashboard() {
+  els.dashboardGrid.innerHTML = `<p class="empty">Carregando painel.</p>`;
+  const response = await fetch("/api/dashboard");
+  state.dashboard = await response.json();
+  renderDashboard();
+}
 
 function ensureOverride(code) {
   if (!state.overrides[code]) state.overrides[code] = { primary: "", order: [], hidden: [] };
@@ -416,6 +504,7 @@ els.missing.addEventListener("change", (event) => {
   state.missingOnly = event.target.checked;
   renderList();
 });
+els.refreshDashboard.addEventListener("click", () => loadDashboard().catch((error) => alert(error.message)));
 els.save.addEventListener("click", () => save().catch((error) => alert(error.message)));
 els.publish.addEventListener("click", () => {
   publishCatalog()
@@ -426,4 +515,7 @@ els.publish.addEventListener("click", () => {
     });
 });
 
+loadDashboard().catch((error) => {
+  els.dashboardGrid.innerHTML = `<p class="empty">${escapeHtml(error.message)}</p>`;
+});
 loadData();
