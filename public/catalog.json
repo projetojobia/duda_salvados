@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-08-11T14:32:27",
+  "generatedAt": "2026-08-11T14:49:39",
   "source": {
     "spreadsheetId": "1kqLutUpgQwwnJgHmR7wrJ97zvQR8QZGRB6QyymM4GPU",
     "workbook": "Duda_Salvados_Hermes_GoogleSheets_v2_dashboard_executivo.xlsx"
   },
   "summary": {
-    "products": 71,
-    "categories": 45,
-    "totalPotential": 4775.0,
+    "products": 72,
+    "categories": 46,
+    "totalPotential": 4780.0,
     "missingPhotos": [
       "DS002",
       "DS004"
@@ -28,6 +28,7 @@
     "Beleza e cuidados com o cabelo",
     "Beleza e cuidados pessoais",
     "Brinquedos",
+    "Brinquedos / Massinha",
     "Brinquedos / Pelúcias",
     "Calcados",
     "Calçados",
@@ -2170,6 +2171,34 @@
         }
       ],
       "whatsAppText": "Ola, tenho interesse no DS072 - Kit com 5 refis para mop giratório"
+    },
+    {
+      "code": "DS073",
+      "slug": "ds073-alcalex-massa-de-modelar-6-cores-65g",
+      "title": "Alcalex Massa de Modelar 6 cores 65g",
+      "description": "Massa de modelar Alcalex com 6 cores, 65g, nao toxica. Ideal para atividades infantis, escola, lembrancinhas e brincadeiras criativas. Produto em caixa individual; conferir lacre e validade antes da entrega.",
+      "category": "Brinquedos / Massinha",
+      "brand": "Alcalex",
+      "model": "Alcalex Massa de Modelar 6 cores 65g",
+      "condition": "Novo com caixa avariada",
+      "tested": "Nao se aplica",
+      "working": "Produto manual; conferir lacre, validade e integridade da massa antes da entrega.",
+      "status": "Disponível",
+      "sold": false,
+      "catalogStatus": "Nao publicado",
+      "location": "A1",
+      "price": "5",
+      "quantity": "1",
+      "images": [
+        "/assets/products/ds073-alcalex-massa-de-modelar-6-cores-65g-01.webp"
+      ],
+      "media": [
+        {
+          "type": "image",
+          "url": "/assets/products/ds073-alcalex-massa-de-modelar-6-cores-65g-01.webp"
+        }
+      ],
+      "whatsAppText": "Ola, tenho interesse no DS073 - Alcalex Massa de Modelar 6 cores 65g"
     }
   ]
 }
