@@ -2,6 +2,7 @@ const state = {
   products: [],
   overrides: {},
   productOverrides: {},
+  priceUpdates: {},
   selected: "",
   search: "",
   missingOnly: false,
@@ -40,10 +41,11 @@ function ensureOverride(code) {
 }
 
 function ensureProductOverride(code) {
-  if (!state.productOverrides[code]) state.productOverrides[code] = { title: "", sold: false, hidden: false };
+  if (!state.productOverrides[code]) state.productOverrides[code] = { title: "", sold: false, hidden: false, price: "" };
   state.productOverrides[code].title ||= "";
   state.productOverrides[code].sold = Boolean(state.productOverrides[code].sold);
   state.productOverrides[code].hidden = Boolean(state.productOverrides[code].hidden);
+  state.productOverrides[code].price ||= "";
   return state.productOverrides[code];
 }
 
@@ -126,6 +128,15 @@ function updateTitle(code, title) {
   renderList();
 }
 
+function updatePrice(code, price) {
+  const cleanPrice = String(price || "").replace(",", ".").trim();
+  const override = ensureProductOverride(code);
+  override.price = cleanPrice;
+  state.priceUpdates[code] = cleanPrice;
+  const product = state.products.find((item) => item.code === code);
+  if (product) product.price = cleanPrice;
+}
+
 function updateSold(code, sold) {
   const override = ensureProductOverride(code);
   override.sold = sold;
@@ -183,6 +194,10 @@ function renderEditor() {
       <span>Titulo do produto</span>
       <input id="title-edit" type="text" value="${escapeHtml(productOverride.title || "")}" placeholder="${escapeHtml(product.title)}" />
     </label>
+    <label class="field">
+      <span>Preco final (R$)</span>
+      <input id="price-edit" type="number" min="0" step="1" value="${escapeHtml(product.price)}" />
+    </label>
     <label class="sold-toggle">
       <input id="sold-edit" type="checkbox" ${productOverride.sold ? "checked" : ""} />
       <span>Produto vendido</span>
@@ -199,6 +214,9 @@ function renderEditor() {
   els.editor.append(tools);
   tools.querySelector("#title-edit").addEventListener("input", (event) => {
     updateTitle(product.code, event.target.value);
+  });
+  tools.querySelector("#price-edit").addEventListener("input", (event) => {
+    updatePrice(product.code, event.target.value);
   });
   tools.querySelector("#sold-edit").addEventListener("change", (event) => {
     updateSold(product.code, event.target.checked);
@@ -282,9 +300,13 @@ async function save() {
     if (override.title) cleanedOverride.title = override.title;
     if (override.sold) cleanedOverride.sold = true;
     if (override.hidden) cleanedOverride.hidden = true;
+    if (override.price !== "" && Number.isFinite(Number(override.price))) cleanedOverride.price = Math.round(Number(override.price));
     if (Object.keys(cleanedOverride).length) productCleaned[code] = cleanedOverride;
   }
-  const [response, productResponse] = await Promise.all([
+  const priceUpdates = Object.fromEntries(
+    Object.entries(state.priceUpdates).filter(([, price]) => price !== "" && Number.isFinite(Number(price)))
+  );
+  const [response, productResponse, priceResponse] = await Promise.all([
     fetch("/api/overrides", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -295,14 +317,20 @@ async function save() {
       headers: { "content-type": "application/json" },
       body: JSON.stringify(productCleaned),
     }),
+    fetch("/api/product-prices", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(priceUpdates),
+    }),
   ]);
-  if (!response.ok || !productResponse.ok) {
-    const failed = !response.ok ? response : productResponse;
+  if (!response.ok || !productResponse.ok || !priceResponse.ok) {
+    const failed = !response.ok ? response : !productResponse.ok ? productResponse : priceResponse;
     const details = await failed.text().catch(() => "");
     throw new Error(`Falha ao salvar (${failed.status}). ${details}`.trim());
   }
   state.overrides = cleaned;
   state.productOverrides = productCleaned;
+  state.priceUpdates = {};
   els.save.textContent = "Salvo";
   setTimeout(() => {
     els.save.textContent = "Salvar escolhas";

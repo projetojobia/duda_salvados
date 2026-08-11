@@ -128,6 +128,65 @@ async function readPricingSources() {
   }
 }
 
+async function writeProductPrices(priceUpdates) {
+  const safeUpdates = {};
+  for (const [rawCode, rawPrice] of Object.entries(priceUpdates || {})) {
+    const code = sanitizeCode(rawCode);
+    const price = Number(String(rawPrice || "").replace(",", "."));
+    if (code && Number.isFinite(price) && price >= 0) {
+      safeUpdates[code] = Math.round(price);
+    }
+  }
+  if (!Object.keys(safeUpdates).length) return { ok: true, updated: [] };
+
+  const tempFile = path.join(root, `.price-updates-${Date.now()}-${randomUUID().slice(0, 8)}.json`);
+  await writeFile(tempFile, JSON.stringify(safeUpdates), "utf8");
+  const script = [
+    "import json, sys, openpyxl",
+    "workbook_path=sys.argv[1]",
+    "updates=json.load(open(sys.argv[2], encoding='utf-8'))",
+    "wb=openpyxl.load_workbook(workbook_path)",
+    "ws=wb['Produtos']",
+    "updated=[]",
+    "for row in range(2, 302):",
+    "    code=str(ws.cell(row, 1).value or '').strip()",
+    "    if code in updates:",
+    "        ws.cell(row, 20).value=float(updates[code])",
+    "        updated.append(code)",
+    "wb.save(workbook_path)",
+    "print(json.dumps({'updated': updated}, ensure_ascii=False))",
+  ].join("\n");
+
+  try {
+    const { stdout } = await execFileAsync("python", ["-c", script, workbookPath, tempFile], {
+      cwd: root,
+      windowsHide: true,
+      maxBuffer: 1024 * 1024 * 4,
+    });
+    const result = JSON.parse(stdout || "{}");
+    return { ok: true, updated: result.updated || [] };
+  } catch (error) {
+    const details = `${error.message || ""}\n${error.stderr || ""}`;
+    if (details.includes("Permission denied")) {
+      return {
+        ok: true,
+        updated: [],
+        workbookUpdated: false,
+        warning: "Planilha local aberta ou travada; preco salvo para o catalogo.",
+      };
+    }
+    return {
+      ok: false,
+      message: error.message || String(error),
+      stdout: error.stdout || "",
+      stderr: error.stderr || "",
+    };
+  } finally {
+    const { rm } = await import("node:fs/promises");
+    await rm(tempFile, { force: true }).catch(() => {});
+  }
+}
+
 function sendJson(res, value) {
   res.writeHead(200, { "content-type": mime[".json"], "cache-control": "no-store" });
   res.end(JSON.stringify(value, null, 2));
@@ -224,7 +283,7 @@ async function handleApi(req, res, url) {
       title: product.title,
       customTitle: productOverrides[product.code]?.title || "",
       category: product.category,
-      price: product.price,
+      price: productOverrides[product.code]?.price || product.price,
       status: product.status,
       pricingSource: pricingSources[product.code] || "",
       pricingSourceUrl: extractFirstUrl(pricingSources[product.code]),
@@ -255,6 +314,18 @@ async function handleApi(req, res, url) {
     const body = JSON.parse(await readBody(req));
     await writeFile(productOverridesPath, `${JSON.stringify(body, null, 2)}\n`, "utf8");
     sendJson(res, { ok: true });
+    return;
+  }
+
+  if (url.pathname === "/api/product-prices" && req.method === "POST") {
+    const body = JSON.parse(await readBody(req));
+    const result = await writeProductPrices(body);
+    if (!result.ok) {
+      res.writeHead(500, { "content-type": mime[".json"], "cache-control": "no-store" });
+      res.end(JSON.stringify(result, null, 2));
+      return;
+    }
+    sendJson(res, result);
     return;
   }
 

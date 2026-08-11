@@ -185,7 +185,7 @@ def build_catalog() -> dict[str, Any]:
         if not image_urls:
             missing_photos.append(code)
 
-        price = str(cell(row, "price")).strip()
+        price = str(product_override.get("price") or cell(row, "price")).strip()
         sale_price = parse_brl(price)
         reference_price = calculate_reference_price(cell(row, "price_average"), cell(row, "price_high"), sale_price)
         discount_percent = calculate_discount_percent(sale_price, reference_price)
