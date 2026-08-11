@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-11T16:14:37",
+  "generatedAt": "2026-08-11T16:24:32",
   "source": {
     "spreadsheetId": "1kqLutUpgQwwnJgHmR7wrJ97zvQR8QZGRB6QyymM4GPU",
     "workbook": "Duda_Salvados_Hermes_GoogleSheets_v2_dashboard_executivo.xlsx"
@@ -2001,17 +2001,12 @@
       "price": "19",
       "quantity": "1",
       "images": [
-        "/assets/products/ds067-igora-royal-louro-claro-01.webp",
-        "/assets/products/ds067-igora-royal-louro-claro-02.webp"
+        "/assets/products/ds067-igora-royal-louro-claro-01.webp"
       ],
       "media": [
         {
           "type": "image",
           "url": "/assets/products/ds067-igora-royal-louro-claro-01.webp"
-        },
-        {
-          "type": "image",
-          "url": "/assets/products/ds067-igora-royal-louro-claro-02.webp"
         }
       ],
       "whatsAppText": "Ola, tenho interesse no DS067 - Igora Royal louro claro"
