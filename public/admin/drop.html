@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin de Drops - Duda Salvados</title>
+    <link rel="stylesheet" href="/admin/drop.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p>Admin local</p>
+        <h1>Drops relampago</h1>
+      </div>
+      <a href="/admin/photos.html">Curadoria do catalogo</a>
+    </header>
+
+    <main class="layout">
+      <section class="panel setup">
+        <div class="section-head">
+          <div>
+            <span>Configuracao</span>
+            <h2>Montar proximo drop</h2>
+          </div>
+          <label class="switch">
+            <input id="active" type="checkbox" />
+            <span>Drop ativo</span>
+          </label>
+        </div>
+
+        <div class="fields">
+          <label>
+            <span>Titulo</span>
+            <input id="title" type="text" maxlength="120" />
+          </label>
+          <label class="wide">
+            <span>Mensagem</span>
+            <textarea id="subtitle" rows="3" maxlength="400"></textarea>
+          </label>
+          <label>
+            <span>Duracao</span>
+            <select id="duration">
+              <option value="15">15 minutos</option>
+              <option value="30">30 minutos</option>
+              <option value="60" selected>1 hora</option>
+              <option value="120">2 horas</option>
+              <option value="240">4 horas</option>
+              <option value="720">12 horas</option>
+              <option value="1440">24 horas</option>
+            </select>
+          </label>
+          <label>
+            <span>Expira em</span>
+            <input id="expires-at" type="datetime-local" />
+          </label>
+          <label>
+            <span>Titulo apos expirar</span>
+            <input id="expired-title" type="text" maxlength="120" />
+          </label>
+          <label class="wide">
+            <span>Mensagem apos expirar</span>
+            <textarea id="expired-message" rows="2" maxlength="400"></textarea>
+          </label>
+        </div>
+
+        <div class="quick-actions">
+          <button id="apply-duration" type="button">Aplicar duracao a partir de agora</button>
+          <button id="clear-selection" type="button">Limpar produtos</button>
+        </div>
+      </section>
+
+      <section class="panel products-panel">
+        <div class="section-head">
+          <div>
+            <span>Produtos</span>
+            <h2>Escolha o que sera liberado</h2>
+          </div>
+          <strong id="selected-count">0 selecionados</strong>
+        </div>
+
+        <div class="filters">
+          <input id="search" type="search" placeholder="Buscar codigo, produto ou categoria" />
+          <label><input id="available-only" type="checkbox" checked /> Somente disponiveis</label>
+        </div>
+
+        <div id="product-grid" class="product-grid" aria-live="polite"></div>
+      </section>
+
+      <aside class="panel preview-panel">
+        <div class="section-head">
+          <div>
+            <span>Resumo</span>
+            <h2>Drop atual</h2>
+          </div>
+        </div>
+        <div id="drop-summary" class="drop-summary"></div>
+        <div class="actions">
+          <button id="save" type="button">Salvar rascunho</button>
+          <button id="publish" class="primary" type="button">Publicar drop</button>
+          <a class="preview-link" href="/drop.html" target="_blank" rel="noreferrer">Abrir pagina do drop</a>
+        </div>
+        <p id="status" role="status"></p>
+      </aside>
+    </main>
+
+    <script src="/admin/drop.js" type="module"></script>
+  </body>
+</html>
