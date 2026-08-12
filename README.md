@@ -15,6 +15,7 @@ npm run catalog:build
 npm run sheets:sync:dry-run
 npm run sheets:sync
 npm run photos:admin
+npm run drop:admin
 npm run flow:publish
 npm run flow:publish:local
 npm run cf:dev
@@ -42,11 +43,26 @@ Use `Salvar escolhas` para gravar somente no computador. Use `Publicar catalogo`
 
 Se a credencial Google estiver indisponivel, o catalogo ainda pode ser publicado a partir da planilha local. Nesse caso, a planilha Google deve ser reconectada/sincronizada depois.
 
+## Drops relampago
+
+Rode:
+
+```bash
+npm run drop:admin
+```
+
+Abra `http://127.0.0.1:8791/admin/drop.html`. O painel permite selecionar os produtos do catalogo, definir titulo e mensagem, escolher a duracao, ajustar a expiracao e ativar ou desativar o drop.
+
+`Salvar rascunho` atualiza somente `public/drop.json` no computador. `Publicar drop` salva o arquivo, cria commit e envia a alteracao para a branch `main`, usando o fluxo de deploy ja configurado para o site.
+
+A pagina publica do drop continua em `/drop.html`. Produtos vendidos, reservados ou ocultos aparecem como indisponiveis para novas selecoes no painel.
+
 ## Fluxo oficial
 
-1. Enviar foto do produto no Codex.
-2. Codex identifica o produto, pesquisa referencias e sugere preco.
-3. Codex cadastra primeiro na planilha local oficial.
+1. Enviar foto do produto no Codex/Hermes.
+2. O agente identifica o produto, pesquisa referencias e sugere preco.
+3. O produto e cadastrado primeiro na planilha local oficial.
 4. Fotos sao organizadas e associadas ao codigo DS.
 5. A curadoria permite revisar foto principal, titulo visual, vendido e oculto.
 6. `Publicar catalogo` fecha a rodada: sincroniza Google Sheets quando possivel, gera catalogo, envia GitHub e atualiza Cloudflare.
+7. Quando houver campanha, `drop:admin` seleciona poucos produtos e publica um link temporario para o grupo.

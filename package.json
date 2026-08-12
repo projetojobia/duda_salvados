@@ -7,6 +7,7 @@
     "sheets:sync": "python sync_local_workbook_to_google.py",
     "sheets:sync:dry-run": "python sync_local_workbook_to_google.py --dry-run",
     "photos:admin": "node photo_admin_server.js",
+    "drop:admin": "node drop_admin_server.js",
     "flow:publish": "npm run sheets:sync && npm run catalog:build && git add catalog_photo_overrides.json catalog_product_overrides.json catalog_manual_media photo_rename_report.csv public/catalog.json public/assets/products && git commit -m \"Publish catalog updates\" && git push origin main",
     "flow:publish:local": "npm run catalog:build && git add catalog_photo_overrides.json catalog_product_overrides.json catalog_manual_media photo_rename_report.csv public/catalog.json public/assets/products && git commit -m \"Publish catalog updates\" && git push origin main",
     "cf:dev": "wrangler dev",
